@@ -1,6 +1,7 @@
 ---
 title: "Marcus R Coding Class"
-author: "Dr. Hasse Walum"
+author: ["Instructor: Hasse Walum (hasse.walum@emory.edu)", 
+"TA: Aiden Ford (aiden.l.ford@emory.edu)"]
 output:
   html_document:
     css: [home.css, style.css]
