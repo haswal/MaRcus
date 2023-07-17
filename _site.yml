@@ -1,9 +1,22 @@
-name: "my-website"
+name: ""
+output_dir: "docs"
 navbar:
-  title: "My Website"
+  title: "Marcus R Coding Class"
   left:
-    - text: "Home"
+    - text: "Getting Started"
       href: index.html
-    - text: "About"
-      href: about.html
-output_dir: docs
+    #- text: "Resources"
+     # href: resources.html
+    #- text: "Sessions"
+     # menu:
+      #  - text: "Session 1"
+         # href: 01_session.html
+
+output: 
+  html_document: 
+    theme: flatly
+    toc: TRUE
+    toc_float: true
+    toc_depth: 3
+    number_sections: FALSE
+    css: style.css

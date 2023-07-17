@@ -1,0 +1,51 @@
+---
+title: "Resources"
+---
+
+Here you can find links to the reference text and other helpful guides and examples.
+
+### Textbook: R for Data Science
+
+[R for Data Science](https://r4ds.had.co.nz/) is a **free** online text by Hadley Wickham and Garrett Grolemund. This is our workshop textbook. We won't use this book chapter by chapter necessarily, but we will base many of our exercises off of this text.
+
+[![](https://d33wubrfki0l68.cloudfront.net/b88ef926a004b0fce72b2526b0b5c4413666a4cb/24a30/cover.png){width=25%}](https://r4ds.had.co.nz/)
+
+### Posit Cheatsheets
+
+[Here](https://posit.co/resources/cheatsheets/) you can find a collection of cheatsheets for different aspects of coding in R and RStudio. 
+
+### Twitte`R`
+
+The `#rstats` community on Twitter is highly active and a great resource for learning and sharing all things R. Check it out!
+
+https://twitter.com/hashtag/rstats?lang=en
+
+### TidyTuesday
+An interesting and new data set each week to practice transforming and plotting.
+
+https://github.com/rfordatascience/tidytuesday
+
+
+### Data Visualization
+
+Claus O. Wilke has written a free book on Data Visualization in R. Check it out [here](https://clauswilke.com/dataviz/).
+
+
+### How popular is R?
+
+The link below will bring you to an article describing data on the popularity of a variety of data analysis software programs.
+
+https://r4stats.com/articles/popularity/
+
+
+### Teacups, Giraffes, & Statistics
+
+https://tinystats.github.io/teacups-giraffes-and-statistics/
+
+<!-- ### Other websites -->
+
+<!-- All of the links below are sites built using R.  -->
+
+<!-- * A book: https://smltar.com/ -->
+<!-- * A blog: http://desiree.rbind.io/ -->
+<!-- * A project site: https://www.tidymodels.org/ -->
