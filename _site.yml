@@ -1,7 +1,7 @@
 name: ""
 output_dir: "docs"
 navbar:
-  title: "Marcus R Coding Class"
+  title: "Marcus R Training"
   left:
     - text: "Getting Started"
       href: index.html

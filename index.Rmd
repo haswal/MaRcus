@@ -1,5 +1,5 @@
 ---
-title: "Marcus R Coding Class"
+title: "Marcus R Training"
 author: ["Instructor: Hasse Walum (hasse.walum@emory.edu)", 
 "TA: Aiden Ford (aiden.l.ford@emory.edu)"]
 output:
