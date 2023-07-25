@@ -88,3 +88,4 @@ ggplot(data = cb_data,
   geom_point() +
   facet_grid(Observer~`Phase (color)`,
              scales = "free_x")
+
