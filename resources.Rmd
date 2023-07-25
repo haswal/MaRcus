@@ -12,13 +12,8 @@ Here you can find links to the reference text and other helpful guides and examp
 
 ### Posit Cheatsheets
 
-[Here](https://posit.co/resources/cheatsheets/) you can find a collection of cheatsheets for different aspects of coding in R and RStudio. 
+[Here](https://posit.co/resources/cheatsheets/) you can find a collection of cheatsheets for different aspects of coding in R and and working in RStudio. 
 
-### Twitte`R`
-
-The `#rstats` community on Twitter is highly active and a great resource for learning and sharing all things R. Check it out!
-
-https://twitter.com/hashtag/rstats?lang=en
 
 ### TidyTuesday
 An interesting and new data set each week to practice transforming and plotting.
@@ -41,6 +36,19 @@ https://r4stats.com/articles/popularity/
 ### Teacups, Giraffes, & Statistics
 
 https://tinystats.github.io/teacups-giraffes-and-statistics/
+
+
+### Cloudbuddy data
+
+We will have the privilege to work with data on a newly discovered being: Cloudbuddies. Cloudbuddies were first discovered in 2013 and for a decade they have been a source of confusion and frustration in the scientific community, due to, among other things, the fact that they seem to be a living, breathing, inexplicable mix of Altocumulus clouds and Cloudberries. Not much is known about Cloudbuddies and currently data is rather limited, but over the course of the next months more and more information will be collected and shared with us for analysis. 
+
+<br>
+
+<center>
+
+![](image0.png){#id .class width=80% height=80%, }
+
+</center>
 
 <!-- ### Other websites -->
 
