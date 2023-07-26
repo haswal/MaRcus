@@ -347,16 +347,14 @@ div.tocify {
 <div id="agenda" class="section level2">
 <h2>Agenda</h2>
 <ul>
-<li>Getting familiar with the RStudio IDE</li>
-<li>Using RStudio Projects</li>
 <li>Importing data from an Excel file</li>
 <li>Introducing <code>ggplot2</code> to create data visualizations</li>
+<li>Mapping variables to aesthetics</li>
+<li>Facets</li>
+<li>Adding multiple geoms to the same plot</li>
 </ul>
-</div>
-<div id="script" class="section level2">
-<h2>Script</h2>
-<p>Here’s the script from Session 1. You can download this and save it
-inside the R Project folder that you created for this workshop.</p>
+<!-- ## Script -->
+<!-- Here's the script from Session 1. You can download this and save it inside the R Project folder that you created for this workshop. -->
 <!-- to add scripts -->
 <!-- ```{r, include = FALSE, eval = FALSE} -->
 <!-- # install and load these packages -->
@@ -384,35 +382,104 @@ href="https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf"
 <p>A nice review of the RStudio IDE and R Projects: <a
 href="https://www.youtube.com/watch?v=kfcX5DEMAp4"
 class="uri">https://www.youtube.com/watch?v=kfcX5DEMAp4</a></p>
-<p>The introduction to data visualization we will cover today is based
-off of Chapter 3 (sections 3.1 - 3.3) in the R4DS textbook: <a
+<p>The data visualization methods we will cover today is based off of
+Chapter 3 (sections 3.1 - 3.6) in the R4DS textbook: <a
 href="https://r4ds.had.co.nz/data-visualisation.html"
 class="uri">https://r4ds.had.co.nz/data-visualisation.html</a></p>
-<p>To learn about loess: <a
-href="https://en.wikipedia.org/wiki/Local_regression"
-class="uri">https://en.wikipedia.org/wiki/Local_regression</a></p>
 </div>
 <div id="homework-exercises" class="section level2">
 <h2>Homework Exercises</h2>
+<p>The homework exercises for this week are below. I suggest that you
+create a new R script to work through the answers, and save your
+exercises script in your RStudio Project for the class.</p>
+<p>You’ll first need to read in the data the way that we showed during
+the live session, and call it <code>cb_data</code>.</p>
 <ol style="list-style-type: decimal">
-<li><p>Create an excel file (in Microsoft Excel) with three columns of
-data. The first column should include both words and numbers and be 20
-rows long. Read you file into R using the <code>read_xlsx()</code>
-function. Try three different ways to specify the sheet you want
-imported. Add missing values at random to the data, using <em>-99</em>
-to indicate missing values. Read in the data again, and make sure
-missing values are handled correctly.</p></li>
-<li><p>Assign the “correct” colors to the <strong>colors</strong>
-variable in the plot above. Take a look at this <a
-href="https://www.statology.org/color-by-factor-ggplot2/">link</a>
-(Example 2) to figure out how to change the default color scheme.</p>
-<p>What did this example teach you about where the <code>aes()</code>
-command can be placed?</p>
+<li><p>Create a scatter plot using <code>cb_data</code>, showing the
+relationship between the variables <code>Age_in_days</code> and
+<code>Volume</code>.</p></li>
+<li><p>Recreate the R code necessary to generate the following
+graph:</p>
+<p><img src="01_session_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>In our Cloudbuddy data there are measurements of both Weight and
+Volume. It is reasonable to assume that there is a strong relationship
+between these two variables. Start with the scatter plot you made in #1
+and map <code>Weight</code> to a few different aesthetics (for example
+<code>size</code>, <code>shape</code> and <code>color</code>). Which
+aesthetic best captures the relationship between <code>Weight</code> and
+<code>Volume</code> over time?</p></li>
+<li><p>In exercise 3, <code>Weight</code>, a continuous variable, was
+mapped to different aesthetics. Now try mapping
+<code>Phase (color)</code>, a categorical variable, to the same
+aesthetics you tried in #3. Do these aesthetics behave differently for
+continuous vs. categorical variables?</p></li>
+<li><p>What’s gone wrong with this code? Why are the points not
+blue?</p>
+<pre class="r"><code>ggplot(data = cb_data, 
+       mapping = aes(x = Age_in_days, 
+                     y = Volume, 
+                     color = &quot;blue&quot;)) + 
+  geom_point()</code></pre>
+<p><img src="01_session_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p></li>
+<li><p>What happens if you map an aesthetic to something other than just
+a variable name, like <code>aes(color = Observer == "raID-02")</code>?
+Note, you’ll also need to specify x and y, and add
+<code>geom_point()</code>.</p></li>
+<li><p>Run <code>?labs</code>, read the help page and see if you can
+recreate the plot below. Note that <code>labs</code> can be used to
+remove labels as well as adding them. Bonus points if you can figure out
+how to add the superscript in y-axis label.</p>
+<p><img src="01_session_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>The default <code>ggplot2</code> settings create plots with a
+characteristic grey background. This does not align with everybody’s
+preference (Hasse for example hates it). Luckily, changing the overall
+look of a plot is easy. Take a look at <a
+href="https://ggplot2.tidyverse.org/reference/ggtheme.html">this
+link</a>, read about how to change complete themes and try a few themes
+(using any plot creating code from previous exercises).</p>
+<p>Some themes are not great when working with facets. Why?</p>
+<p>Could you not find a theme you like? Would you like more options?
+Here is a <a
+href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/">link</a>
+with info about the <code>ggthemes</code> package, which after you
+install it (using <code>install.packages("ggthemes")</code>) gives you
+many more themes (and other options to customize the look of plots made
+with <code>ggplot2</code>).</p></li>
+<li><p>What does the <code>group =</code> aesthetic do? Run the code
+below and explain what you see.</p>
+<p>What does <code>se = FALSE</code> in <code>geom_smooth</code> do?
+What happens if you set if to TRUE in this case?</p>
+<pre class="r"><code>ggplot(data = cb_data,
+   aes(x = Age_in_days,
+       y = Volume)) +
+  geom_smooth(aes(group = Cloudbuddy),
+          se = FALSE, 
+          size = 0.2)</code></pre></li>
+<li><p>Do your best to recreate the plot below. Check out <a
+href="https://www.datanovia.com/en/blog/how-to-plot-a-smooth-line-using-ggplot2/">this
+link</a> to figure out how to fit a straight line to the data (instead
+of the wiggly trajectories we have seen this geom produce so far).</p>
+<p><img src="01_session_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>Assign the “correct” colors to the <code>Phase (color)</code>
+variable in the plot above (meaning that the dots in the scatter plot
+representing for example <code>1-lightgray</code> should have the color
+<code>"lightgray"</code> and so forth). Take a look at <a
+href="https://www.statology.org/color-by-factor-ggplot2/">this link</a>
+(Example 2) to figure out how to manually change the default color
+scheme.</p>
 <p>Run <code>?scale_color_manual</code> in the R console (this will only
 work if the <code>ggplot2</code> package has been loaded). What happens?
 Find the paper talking about color vision deficiencies (and read it if
-you are interested).</p>
+you are interested). There is a color scheme in the
+<code>ggthemes</code> package made speficically with color vision
+deficiencies in mind. Can you find it in the <code>ggthemes</code>
+documentation?</p>
 <p>What does the <code>c()</code> function do?</p></li>
+<li><p>After changing the colors in the exercise above, the color guide
+(the list of colors to the right of plot panel, sometimes also called
+the color legend) is a bit redundant. Can you figure out how to remove
+it? Google will be your friend here, and good search terms could be
+<em>ggplot2</em>, <em>color guide</em> and <em>remove</em>.</p></li>
 <li><p>Make all dots in the plot squares. Use the text book or the
 internet to figure out how it is done. What did you learn about shapes
 and colors?</p></li>

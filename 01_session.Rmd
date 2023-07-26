@@ -11,14 +11,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Agenda
 
-* Getting familiar with the RStudio IDE
-* Using RStudio Projects
 * Importing data from an Excel file
 * Introducing `ggplot2` to create data visualizations
+* Mapping variables to aesthetics 
+* Facets
+* Adding multiple geoms to the same plot
 
-## Script
+<!-- ## Script -->
 
-Here's the script from Session 1. You can download this and save it inside the R Project folder that you created for this workshop.
+<!-- Here's the script from Session 1. You can download this and save it inside the R Project folder that you created for this workshop. -->
 
 <!-- to add scripts -->
 
@@ -46,25 +47,121 @@ Here's the script from Session 1. You can download this and save it inside the R
 
 
 ## Resources
+
 A nice review of the RStudio IDE and R Projects:
 https://www.youtube.com/watch?v=kfcX5DEMAp4
 
-The introduction to data visualization we will cover today is based off of Chapter 3 (sections 3.1 - 3.3) in the R4DS textbook: https://r4ds.had.co.nz/data-visualisation.html
-
-To learn about loess: https://en.wikipedia.org/wiki/Local_regression
+The data visualization methods we will cover today is based off of Chapter 3 (sections 3.1 - 3.6) in the R4DS textbook: https://r4ds.had.co.nz/data-visualisation.html
 
 
 ## Homework Exercises
 
-1. Create an excel file (in Microsoft Excel) with three columns of data. The first column should include both words and numbers and be 20 rows long. Read you file into R using the `read_xlsx()` function. Try three different ways to specify the sheet you want imported. Add missing values at random to the data, using *-99* to indicate missing values. Read in the data again, and make sure missing values are handled correctly.  
+The homework exercises for this week are below. I suggest that you create a new R script to work through the answers, and save your exercises script in your RStudio Project for the class.
 
-1. Assign the "correct" colors to the **colors** variable in the plot above. Take a look at this [link](https://www.statology.org/color-by-factor-ggplot2/) (Example 2) to figure out how to change the default color scheme.
+You’ll first need to read in the data the way that we showed during the live session, and call it `cb_data`.
 
-    What did this example teach you about where the `aes()` command can be placed?
+```{r, include = FALSE}
+library(tidyverse)
+library(readxl)
 
-    Run `?scale_color_manual` in the R console (this will only work if the `ggplot2` package has been loaded). What happens? Find the paper talking about color vision deficiencies (and read it if you are interested).
+cb_data <- read_xlsx(path = "CB_data_2023.xlsx",
+                     skip = 11,
+                     na = "-99")
+
+```
+
+1. Create a scatter plot using `cb_data`, showing the relationship between the variables `Age_in_days` and `Volume`. 
+
+1. Recreate the R code necessary to generate the following graph:  
+
+    ```{r, echo = FALSE, eval = TRUE, message = FALSE, fig.align="center", warning=FALSE}
+    ggplot(data = cb_data, 
+           mapping = aes(x = Age_in_days, 
+                         y = Volume)) +
+      geom_smooth()
+
+    ```
+
+1. In our Cloudbuddy data there are measurements of both Weight and Volume. It is reasonable to assume that there is a strong relationship between these two variables. Start with the scatter plot you made in #1 and map `Weight` to a few different aesthetics (for example `size`, `shape` and `color`). Which aesthetic best captures the relationship between `Weight` and `Volume` over time?   
+
+1. In exercise 3, `Weight`, a continuous variable, was mapped to different aesthetics. Now try mapping `Phase (color)`, a categorical variable, to the same aesthetics you tried in #3. Do these aesthetics behave differently for continuous vs. categorical variables?   
+
+1. What's gone wrong with this code? Why are the points not blue?  
+
+    ```{r, echo = TRUE, eval = TRUE, warning=FALSE}
+    ggplot(data = cb_data, 
+           mapping = aes(x = Age_in_days, 
+                         y = Volume, 
+                         color = "blue")) + 
+      geom_point()
+    ```
+
+1. What happens if you map an aesthetic to something other than just a variable name, like `aes(color = Observer == "raID-02")`? Note, you'll also need to specify x and y, and add `geom_point()`.
+
+    ```{r, echo = FALSE, eval = FALSE, warning=FALSE}
+    ggplot(data = cb_data, 
+           mapping = aes(x = Age_in_days, 
+                         y = Volume, 
+                         color = Observer == "raID-02")) + 
+      geom_point()
+    ```
+
+1. Run `?labs`, read the help page and see if you can recreate the plot below. Note that `labs` can be used to remove labels as well as adding them. Bonus points if you can figure out how to add the superscript in y-axis label.  
+
+    ```{r, message=FALSE, warning=FALSE, fig.align='center', echo=FALSE}
+ggplot(data = cb_data,
+       aes(x = Age_in_days,
+           y = Volume)) +
+  geom_point(aes(color = `Phase (color)`)) +
+  labs(title = "Cloudbuddy volume over time",
+       color = NULL,
+       x = "Age in days", 
+       y = Volume~(m^3))
+
+    ```
+
+
+1. The default `ggplot2` settings create plots with a characteristic grey background. This does not align with everybody's preference (Hasse for example hates it). Luckily, changing the overall look of a plot is easy. Take a look at [this link](https://ggplot2.tidyverse.org/reference/ggtheme.html), read about how to change complete themes and try a few themes (using any plot creating code from previous exercises).
+
+    Some themes are not great when working with facets. Why?
+    
+    Could you not find a theme you like? Would you like more options? Here is a [link](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/) with info about the `ggthemes` package, which after you install it (using `install.packages("ggthemes")`) gives you many more themes (and other options to customize the look of plots made with `ggplot2`).
+    
+1. What does the `group =` aesthetic do? Run the code below and explain what you see. 
+
+    What does `se = FALSE` in `geom_smooth` do? What happens if you set if to TRUE in this case?
+
+    ```{r, warning=FALSE, message=FALSE, eval=FALSE}
+ggplot(data = cb_data,
+       aes(x = Age_in_days,
+           y = Volume)) +
+  geom_smooth(aes(group = Cloudbuddy),
+              se = FALSE, 
+              size = 0.2)
+    ```
+
+1. Do your best to recreate the plot below. Check out [this link](https://www.datanovia.com/en/blog/how-to-plot-a-smooth-line-using-ggplot2/) to figure out how to fit a straight line to the data (instead of the wiggly trajectories we have seen this geom produce so far).
+
+    ```{r, message=FALSE, warning=FALSE, fig.align='center', echo=FALSE}
+ggplot(data = cb_data,
+       aes(x = Age_in_days,
+           y = Volume)) +
+  geom_point(aes(color = `Phase (color)`)) +
+      geom_smooth(method = "lm") +
+      facet_wrap(~`Phase (color)`, 
+                 ncol = 6, 
+                 scales = "free_x")
+
+    ```
+
+
+1. Assign the "correct" colors to the `Phase (color)` variable in the plot above (meaning that the dots in the scatter plot representing for example `1-lightgray` should have the color `"lightgray"` and so forth). Take a look at [this link](https://www.statology.org/color-by-factor-ggplot2/) (Example 2) to figure out how to manually change the default color scheme.
+
+    Run `?scale_color_manual` in the R console (this will only work if the `ggplot2` package has been loaded). What happens? Find the paper talking about color vision deficiencies (and read it if you are interested). There is a color scheme in the `ggthemes` package made speficically with color vision deficiencies in mind. Can you find it in the `ggthemes` documentation?
     
     What does the `c()` function do?
+    
+1. After changing the colors in the exercise above, the color guide (the list of colors to the right of plot panel, sometimes also called the color legend) is a bit redundant. Can you figure out how to remove it? Google will be your friend here, and good search terms could be *ggplot2*, *color guide* and *remove*. 
     
 1. Make all dots in the plot squares. Use the text book or the internet to figure out how it is done. What did you learn about shapes and colors?  
 
