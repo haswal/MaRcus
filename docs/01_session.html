@@ -326,6 +326,18 @@ div.tocify {
 <li>
   <a href="resources.html">Resources</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Sessions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_session.html">Session 1</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -448,61 +460,54 @@ with <code>ggplot2</code>).</p></li>
 <li><p>What does the <code>group =</code> aesthetic do? Run the code
 below and explain what you see.</p>
 <p>What does <code>se = FALSE</code> in <code>geom_smooth</code> do?
-What happens if you set if to TRUE in this case?</p>
+What happens if you set it to TRUE in this case?</p>
 <pre class="r"><code>ggplot(data = cb_data,
    aes(x = Age_in_days,
        y = Volume)) +
   geom_smooth(aes(group = Cloudbuddy),
           se = FALSE, 
-          size = 0.2)</code></pre></li>
+          linewidth = 0.2)</code></pre></li>
 <li><p>Do your best to recreate the plot below. Check out <a
 href="https://www.datanovia.com/en/blog/how-to-plot-a-smooth-line-using-ggplot2/">this
-link</a> to figure out how to fit a straight line to the data (instead
-of the wiggly trajectories we have seen this geom produce so far).</p>
+link</a> to figure out how to fit a straight line to the data using
+<code>geom_smooth</code> (instead of the wiggly trajectories we have
+seen this geom produce so far).</p>
 <p><img src="01_session_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 <li><p>Assign the “correct” colors to the <code>Phase (color)</code>
-variable in the plot above (meaning that the dots in the scatter plot
+variable in a scatter plot where <code>x = Age_in_days</code> and
+<code>y = Volume</code> (meaning that the dots in the scatter plot
 representing for example <code>1-lightgray</code> should have the color
 <code>"lightgray"</code> and so forth). Take a look at <a
 href="https://www.statology.org/color-by-factor-ggplot2/">this link</a>
 (Example 2) to figure out how to manually change the default color
 scheme.</p>
-<p>Run <code>?scale_color_manual</code> in the R console (this will only
-work if the <code>ggplot2</code> package has been loaded). What happens?
+<p>Run <code>?scale_color_manual</code> in the R console. What happens?
 Find the paper talking about color vision deficiencies (and read it if
 you are interested). There is a color scheme in the
 <code>ggthemes</code> package made speficically with color vision
 deficiencies in mind. Can you find it in the <code>ggthemes</code>
 documentation?</p>
 <p>What does the <code>c()</code> function do?</p></li>
-<li><p>After changing the colors in the exercise above, the color guide
+<li><p>After changing the colors in the exercise above, the color legend
 (the list of colors to the right of plot panel, sometimes also called
-the color legend) is a bit redundant. Can you figure out how to remove
+the color guide) is a bit redundant. Can you figure out how to remove
 it? Google will be your friend here, and good search terms could be
-<em>ggplot2</em>, <em>color guide</em> and <em>remove</em>.</p></li>
-<li><p>Make all dots in the plot squares. Use the text book or the
-internet to figure out how it is done. What did you learn about shapes
-and colors?</p></li>
-<li><p>A colleague of yours, from one of the Scandinavian countries (you
-don’t remember which, it could be any of them) has sent you a csv file.
-The data can be downloaded here. Read in the data using one of the
-functions from the <code>readr</code> package and make sure all columns
-are correctly read. You will have to open the data and figure out a way
-to identify where the data comes from (and use google to find the ICU
-locale language code). Then complete this code:</p></li>
+<em>ggplot2</em>, <em>color legend</em> and <em>remove</em>.</p></li>
+<li><p>Recreate the R code necessary to generate the following
+graphs.</p>
+<ol style="list-style-type: lower-alpha">
+<li></li>
 </ol>
-<pre class="r"><code>read_csv(file = ___,
-         na = ___,
-         locale = ___,
-         col_types = cols(
-           values = ___,
-           date = ____
-         ))</code></pre>
-<p>More information can be found in the R4DS book, chapters <a
-href="https://r4ds.had.co.nz/data-import.html#readr-datetimes">11.3.4</a>
-and <a
-href="https://r4ds.had.co.nz/data-import.html#problems">11.4.2</a>. Make
-sure you include everything necessary to avoid all warning messages.</p>
+<p><img src="01_session_files/figure-html/unnamed-chunk-8-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<p><img src="01_session_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<p><img src="01_session_files/figure-html/unnamed-chunk-10-1.png" width="508.8" style="display: block; margin: auto;" /></p></li>
+</ol>
 </div>
 
 

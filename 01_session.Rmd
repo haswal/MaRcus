@@ -129,7 +129,7 @@ ggplot(data = cb_data,
     
 1. What does the `group =` aesthetic do? Run the code below and explain what you see. 
 
-    What does `se = FALSE` in `geom_smooth` do? What happens if you set if to TRUE in this case?
+    What does `se = FALSE` in `geom_smooth` do? What happens if you set it to TRUE in this case?
 
     ```{r, warning=FALSE, message=FALSE, eval=FALSE}
 ggplot(data = cb_data,
@@ -137,10 +137,10 @@ ggplot(data = cb_data,
            y = Volume)) +
   geom_smooth(aes(group = Cloudbuddy),
               se = FALSE, 
-              size = 0.2)
+              linewidth = 0.2)
     ```
 
-1. Do your best to recreate the plot below. Check out [this link](https://www.datanovia.com/en/blog/how-to-plot-a-smooth-line-using-ggplot2/) to figure out how to fit a straight line to the data (instead of the wiggly trajectories we have seen this geom produce so far).
+1. Do your best to recreate the plot below. Check out [this link](https://www.datanovia.com/en/blog/how-to-plot-a-smooth-line-using-ggplot2/) to figure out how to fit a straight line to the data using `geom_smooth` (instead of the wiggly trajectories we have seen this geom produce so far).
 
     ```{r, message=FALSE, warning=FALSE, fig.align='center', echo=FALSE}
 ggplot(data = cb_data,
@@ -155,27 +155,67 @@ ggplot(data = cb_data,
     ```
 
 
-1. Assign the "correct" colors to the `Phase (color)` variable in the plot above (meaning that the dots in the scatter plot representing for example `1-lightgray` should have the color `"lightgray"` and so forth). Take a look at [this link](https://www.statology.org/color-by-factor-ggplot2/) (Example 2) to figure out how to manually change the default color scheme.
+1. Assign the "correct" colors to the `Phase (color)` variable in a scatter plot where `x = Age_in_days` and `y = Volume` (meaning that the dots in the scatter plot representing for example `1-lightgray` should have the color `"lightgray"` and so forth). Take a look at [this link](https://www.statology.org/color-by-factor-ggplot2/) (Example 2) to figure out how to manually change the default color scheme.
 
-    Run `?scale_color_manual` in the R console (this will only work if the `ggplot2` package has been loaded). What happens? Find the paper talking about color vision deficiencies (and read it if you are interested). There is a color scheme in the `ggthemes` package made speficically with color vision deficiencies in mind. Can you find it in the `ggthemes` documentation?
+    Run `?scale_color_manual` in the R console. What happens? Find the paper talking about color vision deficiencies (and read it if you are interested). There is a color scheme in the `ggthemes` package made speficically with color vision deficiencies in mind. Can you find it in the `ggthemes` documentation?
     
     What does the `c()` function do?
     
-1. After changing the colors in the exercise above, the color guide (the list of colors to the right of plot panel, sometimes also called the color legend) is a bit redundant. Can you figure out how to remove it? Google will be your friend here, and good search terms could be *ggplot2*, *color guide* and *remove*. 
+1. After changing the colors in the exercise above, the color legend (the list of colors to the right of plot panel, sometimes also called the color guide) is a bit redundant. Can you figure out how to remove it? Google will be your friend here, and good search terms could be *ggplot2*, *color legend* and *remove*. 
+
+1. Recreate the R code necessary to generate the following graphs.  
+
+    a.
     
-1. Make all dots in the plot squares. Use the text book or the internet to figure out how it is done. What did you learn about shapes and colors?  
+    ```{r, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE, fig.align="center", fig.height=4, , fig.width=5.3}
+    ggplot(data = cb_data, 
+           mapping = aes(x = Age_in_days, 
+                         y = Volume)) +
+      geom_point(color = "white", 
+                 shape = 18, 
+                 size = 2) +
+      geom_smooth(color = "white", 
+                  linewidth = 2.5, 
+                  se = FALSE) +
+      theme_dark()
 
-1. A colleague of yours, from one of the Scandinavian countries (you don't remember which, it could be any of them) has sent you a csv file. The data can be downloaded here. Read in the data using one of the functions from the `readr` package and make sure all columns are correctly read. You will have to open the data and figure out a way to identify where the data comes from (and use google to find the ICU locale language code). Then complete this code: 
+    ```
+    
+    b.
+    
+    ```{r, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE, fig.align="center", fig.height=4}
+    ggplot(data = cb_data, 
+           mapping = aes(x = Age_in_days, 
+                         y = Volume)) +
+      geom_point(color = "black", 
+                 size = 4) +
+      geom_point(color = "white",
+                 size = 2) +
+      geom_point(aes(color = `Phase (color)`),
+                 size = 0.5) +
+      theme_classic()
 
-```{r, eval=FALSE}
-read_csv(file = ___,
-         na = ___,
-         locale = ___,
-         col_types = cols(
-           values = ___,
-           date = ____
-         ))
-```
+    ```
+    
+    c.
+    
+    ```{r, eval = TRUE, echo = FALSE, message = FALSE, warning = FALSE, fig.align="center", fig.height=4, fig.width=5.3}
+    ggplot(data = cb_data, 
+           mapping = aes(x = Age_in_days, 
+                         y = Volume)) +
+      geom_point(aes(color = `Phase (color)`),
+                 show.legend = FALSE) +
+      geom_smooth(color = "black") +
+      scale_color_manual(values = c("1-lightgray" = "lightgray",
+                                "2-darkgray" = "darkgray",
+                                "3-darkorange" = "darkorange",
+                                "4-orange" = "orange",
+                                "5-orangered" = "orangered",
+                                "6-red" = "red")) +
+      theme_minimal() +
+      labs(x = "Age in days", 
+           title = "Cloudbuddy volume over time")
 
-
-More information can be found in the R4DS book, chapters [11.3.4](https://r4ds.had.co.nz/data-import.html#readr-datetimes) and [11.4.2](https://r4ds.had.co.nz/data-import.html#problems). Make sure you include everything necessary to avoid all warning messages. 
+    ```
+    
+    

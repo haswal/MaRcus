@@ -49,7 +49,7 @@ ggplot(data = cb_data,
 ggplot(data = cb_data, 
        mapping = aes(x = Age_in_days,
                      y = Weight))
-  +geom_point()
++geom_point()
 
 #Add more Aesthetics to make plot more informative
 #For example color, alpha, shape, size
@@ -139,7 +139,7 @@ ggplot(data = cb_data,
   geom_point(aes(color = `Phase (color)`)) +
   geom_smooth()
 
-#Change line color (no aes)
+#Change line color (outside of aes)
 #Color names shown with color in RStudio
 ggplot(data = cb_data, 
        mapping = aes(x = Age_in_days,
