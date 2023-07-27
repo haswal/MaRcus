@@ -365,28 +365,22 @@ div.tocify {
 <li>Facets</li>
 <li>Adding multiple geoms to the same plot</li>
 </ul>
-<!-- ## Script -->
-<!-- Here's the script from Session 1. You can download this and save it inside the R Project folder that you created for this workshop. -->
+</div>
+<div id="script" class="section level2">
+<h2>Script</h2>
+<p>Here’s the script from Session 1. You can download this and save it
+inside the R Project folder that you created for the class.</p>
 <!-- to add scripts -->
-<!-- ```{r, include = FALSE, eval = FALSE} -->
-<!-- # install and load these packages -->
-<!-- devtools::install_github('yihui/xfun') -->
-<!-- # embed_file() requires a few more packages -->
-<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
-<!-- ``` -->
-<!-- ```{r echo=FALSE} -->
-<!-- # a embed single file -->
-<!-- xfun::embed_file('session_01.R') -->
-<!-- ``` -->
+<a href="data:text/plain;base64,I0xvYWQgdGlkeXZlcnNlIHBhY2thZ2VzIHNvIHdlIGNhbiB1c2UgZ2dwbG90CmxpYnJhcnkodGlkeXZlcnNlKQoKI0xvYWQgdGhlIHJlYWR4bCBwYWNrYWdlIChuZWVkcyB0byBiZSBpbnN0YWxsZWQgZmlyc3QpCmxpYnJhcnkocmVhZHhsKQoKI1VzZSB0aGUgcmVhZF94bHN4KCkgZnVuY3Rpb24gdG8gaW1wb3J0IGRhdGEgZnJvbSBhbiBleGNlbCBkb2N1bWVudAojQWx3YXlzIHRha2UgbG9vayBhdCB0aGUgZGF0YSBiZWZvcmUgYXR0ZW1wdGluZyB0byByZWFkIGludG8gUgojVXNlICJza2lwID0iIHRvIGF2b2lkIHJlYWRpbmcgaW4gbWV0YWRhdGEgbGluZXMKI1VzZSAibmEgPSIgdG8gc3BlY2lmeSBob3cgTkFzIGFyZSBjb2RlZApyZWFkX3hsc3gocGF0aCA9ICJDQl9kYXRhXzIwMjMueGxzeCIsCiAgICAgICAgICBza2lwID0gMTEsCiAgICAgICAgICBuYSA9ICItOTkiKQoKI1J1biA/cmVhZF94bHN4IHRvIGdldCBtb3JlIGluZm9ybWF0aW9uIGFib3V0IHRoZSBmdW5jdGlvbgo/cmVhZF94bHN4CgojQXNzaWduIHRvIGFuIG9iamVjdCB3aXRoIDwtICgiQWx0IiArICItIikKI09iamVjdCBuYW1lcyBtdXN0IHN0YXJ0IHdpdGggYSBsZXR0ZXIsIGNhbiBpbmNsdWRlIGxldHRlcnMsIG51bWJlcnMsIHBlcmlvZHMsIHVuZGVyc2NvcmVzIApjYl9kYXRhIDwtIHJlYWRfeGxzeChwYXRoID0gIkNCX2RhdGFfMjAyMy54bHN4IiwKICAgICAgICAgICAgICAgICAgICAgc2tpcCA9IDExLAogICAgICAgICAgICAgICAgICAgICBuYSA9ICItOTkiKQoKI1VzZSBnbGltcHNlKCkgb3IgdmlldygpIHRvIHRha2UgYSBsb29rIGF0IHRoZSBkYXRhIG9iamVjdAojdmlldygpIHRoZSBzYW1lIGFzIGNsaWNraW5nIHRoZSBvYmplY3QgbmFtZSBpbiBFbnZpcm9ubWVudCB0YWIKZ2xpbXBzZShjYl9kYXRhKQp2aWV3KGNiX2RhdGEpIAoKI1VzZSB0aGUgZ2dwbG90IGZ1bmN0aW9uIHRvIHN0YXJ0IGJ1aWxkaW5nIGEgcGxvdApnZ3Bsb3QoZGF0YSA9IGNiX2RhdGEpCgojVGVsbCBnZ3Bsb3Qgd2hhdCB0byBwbG90IHVzaW5nICJtYXBwaW5nID0gYWVzKCkiCiNhZXMoKSBtYXBwaW5ncyBzaG91bGQgcmVmZXIgdG8gYSBjb2x1bW4gKHZhcmlhYmxlKSBpbiB0aGUgZGF0YQpnZ3Bsb3QoZGF0YSA9IGNiX2RhdGEsIAogICAgICAgbWFwcGluZyA9IGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICAgICAgICAgIHkgPSBXZWlnaHQpKQoKI0NvbXBsZXRlIHRoZSBncmFwaCBieSBhZGRpbmcgb25lIG9yIG1vcmUgbGF5ZXJzCiNHZW9tcyBkZXRlcm1pbmUgdGhlIHR5cGUgb2YgcGxvdCBjcmVhdGVkCiNnZW9tX3BvaW50ID0gc2NhdHRlciBwbG90IGZvciBleGFtcGxlCiNMYXllcnMgYXJlIGFkZGVkIHdpdGggYSAiKyIKZ2dwbG90KGRhdGEgPSBjYl9kYXRhLCAKICAgICAgIG1hcHBpbmcgPSBhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgICAgICAgICB5ID0gV2VpZ2h0KSkgKwogIGdlb21fcG9pbnQoKQoKI0FkZCAiKyIgdG8gdGhlIGVuZCBvZiB0aGUgcHJldmlvdXMgbGluZSBvZiBjb2RlCiNOb3QgYXQgdGhlIGJlZ2lubmluZyAod2lsbCBnaXZlIGFuIGVycm9yKQpnZ3Bsb3QoZGF0YSA9IGNiX2RhdGEsIAogICAgICAgbWFwcGluZyA9IGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICAgICAgICAgIHkgPSBXZWlnaHQpKQorZ2VvbV9wb2ludCgpCgojQWRkIG1vcmUgQWVzdGhldGljcyB0byBtYWtlIHBsb3QgbW9yZSBpbmZvcm1hdGl2ZQojRm9yIGV4YW1wbGUgY29sb3IsIGFscGhhLCBzaGFwZSwgc2l6ZQpnZ3Bsb3QoZGF0YSA9IGNiX2RhdGEsIAogICAgICAgbWFwcGluZyA9IGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICAgICAgICAgIHkgPSBXZWlnaHQsCiAgICAgICAgICAgICAgICAgICAgIGNvbG9yID0gT2JzZXJ2ZXIpKSArCiAgZ2VvbV9wb2ludCgpCgojQXNzaWduIHNoYXBlcyB0byBkaWZmZXJlbnQgb2JzZXJ2ZXJzIGluc3RlYWQgb2YgY29sb3IKZ2dwbG90KGRhdGEgPSBjYl9kYXRhLCAKICAgICAgIG1hcHBpbmcgPSBhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgICAgICAgICB5ID0gV2VpZ2h0LAogICAgICAgICAgICAgICAgICAgICBzaGFwZSA9IE9ic2VydmVyKSkgKwogIGdlb21fcG9pbnQoKQoKI1dlIG11c3QgYWRkIGJhY2t0aWNrcyB3aGVuIHZhcmlhYmxlIG5hbWUgaW5jbHVkZXMgc3BhY2UgCmdncGxvdChkYXRhID0gY2JfZGF0YSwgCiAgICAgICBtYXBwaW5nID0gYWVzKHggPSBBZ2VfaW5fZGF5cywKICAgICAgICAgICAgICAgICAgICAgeSA9IFdlaWdodCwKICAgICAgICAgICAgICAgICAgICAgc2hhcGUgPSBgUGhhc2UgKGNvbG9yKWApKSArCiAgZ2VvbV9wb2ludCgpCgojU3BlY2lmeSBhZXN0aGV0aWNzIG91dHNpZGUgb2YgYWVzKCkgdG8gY2hhbmdlIEFMTCBvYnMKI0hlcmUgdXNpbmcgImFscGhhID0gIiB0byBzaG93IG92ZXJwbG90dGluZwpnZ3Bsb3QoZGF0YSA9IGNiX2RhdGEsIAogICAgICAgbWFwcGluZyA9IGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICAgICAgICAgIHkgPSBXZWlnaHQsCiAgICAgICAgICAgICAgICAgICAgIGNvbG9yID0gYFBoYXNlIChjb2xvcilgKSkgKwogIGdlb21fcG9pbnQoYWxwaGEgPSAwLjMsCiAgICAgICAgICAgICBzaGFwZSA9IDE4KQoKI0RpdmlkZSBwbG90IGludG8gc3VicGxvdHMgd2l0aCBmYWNldHMKI0ZhY2V0X3dyYXAgdGFrZXMgb25lIHZhcmlhYmxlIAojVXNlIHRoZSB0aWxkZSBjaGFyYWN0ZXIgIn4iIHRvIHNwZWNpZnkgdmFyaWFibGUKZ2dwbG90KGRhdGEgPSBjYl9kYXRhLCAKICAgICAgIG1hcHBpbmcgPSBhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgICAgICAgICB5ID0gV2VpZ2h0LAogICAgICAgICAgICAgICAgICAgICBjb2xvciA9IGBQaGFzZSAoY29sb3IpYCkpICsKICBnZW9tX3BvaW50KCkgKwogIGZhY2V0X3dyYXAofmBQaGFzZSAoY29sb3IpYCkKCiNGcmVlIHNjYWxlcyB1c2luZyAic2NhbGVzID0iCmdncGxvdChkYXRhID0gY2JfZGF0YSwgCiAgICAgICBtYXBwaW5nID0gYWVzKHggPSBBZ2VfaW5fZGF5cywKICAgICAgICAgICAgICAgICAgICAgeSA9IFdlaWdodCwKICAgICAgICAgICAgICAgICAgICAgY29sb3IgPSBgUGhhc2UgKGNvbG9yKWApKSArCiAgZ2VvbV9wb2ludCgpICsKICBmYWNldF93cmFwKH5gUGhhc2UgKGNvbG9yKWAsCiAgICAgICAgICAgICBzY2FsZXMgPSAiZnJlZV94IikKCiNDb250cm9sIGxheW91dCB3aXRoICJuY29sID0iIG9yICJucm93ID0iCmdncGxvdChkYXRhID0gY2JfZGF0YSwgCiAgICAgICBtYXBwaW5nID0gYWVzKHggPSBBZ2VfaW5fZGF5cywKICAgICAgICAgICAgICAgICAgICAgeSA9IFdlaWdodCwKICAgICAgICAgICAgICAgICAgICAgY29sb3IgPSBgUGhhc2UgKGNvbG9yKWApKSArCiAgZ2VvbV9wb2ludCgpICsKICBmYWNldF93cmFwKH5gUGhhc2UgKGNvbG9yKWAsCiAgICAgICAgICAgICBzY2FsZXMgPSAiZnJlZV94IiwKICAgICAgICAgICAgIG5jb2wgPSA2KQoKI2ZhY2V0X2dyaWQgd2lsbCB0YWtlIHR3byB2YXJpYWJsZXMKZ2dwbG90KGRhdGEgPSBjYl9kYXRhLCAKICAgICAgIG1hcHBpbmcgPSBhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgICAgICAgICB5ID0gV2VpZ2h0LAogICAgICAgICAgICAgICAgICAgICBjb2xvciA9IGBQaGFzZSAoY29sb3IpYCkpICsKICBnZW9tX3BvaW50KCkgKwogIGZhY2V0X2dyaWQoT2JzZXJ2ZXIgfiBgUGhhc2UgKGNvbG9yKWAsCiAgICAgICAgICAgICBzY2FsZXMgPSAiZnJlZV94IikKCiNNdWx0aXBsZSBnZW9tcyBjYW4gYmUgYWRkZWQgdG8gdGhlIHNhbWUgcGxvdAojSGVyZSBhZGRpbmcgZ2VvbV9zbW9vdGgKZ2dwbG90KGRhdGEgPSBjYl9kYXRhLCAKICAgICAgIG1hcHBpbmcgPSBhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgICAgICAgICB5ID0gV2VpZ2h0LAogICAgICAgICAgICAgICAgICAgICBjb2xvciA9IGBQaGFzZSAoY29sb3IpYCkpICsKICBnZW9tX3BvaW50KCkgKwogIGdlb21fc21vb3RoKCkKCiNHbG9iYWwgdnMgbG9jYWwgYWVzKCkKI0lmIGFlcygpIGlzIHNwZWNpZmllZCBpbiBnZ3Bsb3QoKTogYWZmZWN0cyBhbGwgZ2VvbXMgKGdsb2JhbCkKI2FlcygpIGNhbiBiZSBhZGRlZCB0byBnZW9tcyBpbnN0ZWFkIChsb2NhbCkKZ2dwbG90KGRhdGEgPSBjYl9kYXRhLCAKICAgICAgIG1hcHBpbmcgPSBhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgICAgICAgICB5ID0gV2VpZ2h0LAogICAgICAgICAgICAgICAgICAgICApKSArCiAgZ2VvbV9wb2ludChhZXMoY29sb3IgPSBgUGhhc2UgKGNvbG9yKWApKSArCiAgZ2VvbV9zbW9vdGgoKQoKI0NoYW5nZSBsaW5lIGNvbG9yIChvdXRzaWRlIG9mIGFlcykKI0NvbG9yIG5hbWVzIHNob3duIHdpdGggY29sb3IgaW4gUlN0dWRpbwpnZ3Bsb3QoZGF0YSA9IGNiX2RhdGEsIAogICAgICAgbWFwcGluZyA9IGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICAgICAgICAgIHkgPSBXZWlnaHQsCiAgICAgICApKSArCiAgZ2VvbV9wb2ludChhZXMoY29sb3IgPSBgUGhhc2UgKGNvbG9yKWApKSArCiAgZ2VvbV9zbW9vdGgoY29sb3IgPSAiYmxhY2siKQoKI011bHRpcGxlIGdlb21zIG9mIHRoZSBzYW1lIHR5cGUgY2FuIGJlIGFkZGVkCiNGaXJzdCBnZW9tIGFkZGVkIGluIGNvZGU6IGZpcnN0IHRvIGJlICJkcmF3biIKZ2dwbG90KGRhdGEgPSBjYl9kYXRhLCAKICAgICAgIG1hcHBpbmcgPSBhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgICAgICAgICB5ID0gV2VpZ2h0LAogICAgICAgKSkgKwogIGdlb21fcG9pbnQoY29sb3IgPSAid2hpdGUiLAogICAgICAgICAgICAgc2l6ZSA9IDMpICsKICBnZW9tX3BvaW50KGFlcyhjb2xvciA9IGBQaGFzZSAoY29sb3IpYCkpCg==" download="session_01.R">Download session_01.R</a>
 </div>
 <div id="cheatsheets" class="section level2">
 <h2>Cheatsheets</h2>
 <ul>
 <li><p><a
-href="https://rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf">RStudio
+href="https://rstudio.github.io/cheatsheets/rstudio-ide.pdf">RStudio
 IDE</a></p></li>
 <li><p><a
-href="https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf">ggplot2</a></p></li>
+href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">ggplot2</a></p></li>
 </ul>
 </div>
 <div id="resources" class="section level2">
@@ -412,7 +406,7 @@ relationship between the variables <code>Age_in_days</code> and
 <code>Volume</code>.</p></li>
 <li><p>Recreate the R code necessary to generate the following
 graph:</p>
-<p><img src="01_session_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="01_session_files/figure-html/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 <li><p>In our Cloudbuddy data there are measurements of both Weight and
 Volume. It is reasonable to assume that there is a strong relationship
 between these two variables. Start with the scatter plot you made in #1
@@ -432,7 +426,7 @@ blue?</p>
                      y = Volume, 
                      color = &quot;blue&quot;)) + 
   geom_point()</code></pre>
-<p><img src="01_session_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p></li>
+<p><img src="01_session_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p></li>
 <li><p>What happens if you map an aesthetic to something other than just
 a variable name, like <code>aes(color = Observer == "raID-02")</code>?
 Note, you’ll also need to specify x and y, and add
@@ -441,7 +435,7 @@ Note, you’ll also need to specify x and y, and add
 recreate the plot below. Note that <code>labs</code> can be used to
 remove labels as well as adding them. Bonus points if you can figure out
 how to add the superscript in y-axis label.</p>
-<p><img src="01_session_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="01_session_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 <li><p>The default <code>ggplot2</code> settings create plots with a
 characteristic grey background. This does not align with everybody’s
 preference (Hasse for example hates it). Luckily, changing the overall
@@ -472,7 +466,7 @@ href="https://www.datanovia.com/en/blog/how-to-plot-a-smooth-line-using-ggplot2/
 link</a> to figure out how to fit a straight line to the data using
 <code>geom_smooth</code> (instead of the wiggly trajectories we have
 seen this geom produce so far).</p>
-<p><img src="01_session_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="01_session_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 <li><p>Assign the “correct” colors to the <code>Phase (color)</code>
 variable in a scatter plot where <code>x = Age_in_days</code> and
 <code>y = Volume</code> (meaning that the dots in the scatter plot
@@ -498,15 +492,15 @@ graphs.</p>
 <ol style="list-style-type: lower-alpha">
 <li></li>
 </ol>
-<p><img src="01_session_files/figure-html/unnamed-chunk-8-1.png" width="508.8" style="display: block; margin: auto;" /></p>
+<p><img src="01_session_files/figure-html/unnamed-chunk-10-1.png" width="508.8" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li></li>
 </ol>
-<p><img src="01_session_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="01_session_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li></li>
 </ol>
-<p><img src="01_session_files/figure-html/unnamed-chunk-10-1.png" width="508.8" style="display: block; margin: auto;" /></p></li>
+<p><img src="01_session_files/figure-html/unnamed-chunk-12-1.png" width="508.8" style="display: block; margin: auto;" /></p></li>
 </ol>
 </div>
 

@@ -17,33 +17,33 @@ knitr::opts_chunk$set(echo = TRUE)
 * Facets
 * Adding multiple geoms to the same plot
 
-<!-- ## Script -->
+## Script
 
-<!-- Here's the script from Session 1. You can download this and save it inside the R Project folder that you created for this workshop. -->
+Here's the script from Session 1. You can download this and save it inside the R Project folder that you created for the class.
 
 <!-- to add scripts -->
 
-<!-- ```{r, include = FALSE, eval = FALSE} -->
+```{r, include = FALSE, eval = FALSE}
 
-<!-- # install and load these packages -->
-<!-- devtools::install_github('yihui/xfun') -->
+# install and load these packages
+devtools::install_github('yihui/xfun')
 
-<!-- # embed_file() requires a few more packages -->
-<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
-<!-- ``` -->
+# embed_file() requires a few more packages
+xfun::pkg_load2(c('base64enc', 'htmltools', 'mime'))
+```
 
-<!-- ```{r echo=FALSE} -->
-<!-- # a embed single file -->
-<!-- xfun::embed_file('session_01.R') -->
-<!-- ``` -->
+```{r echo=FALSE}
+# a embed single file
+xfun::embed_file('session_01.R')
+```
 
 
 
 ## Cheatsheets
 
-* [RStudio IDE](https://rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf)
+* [RStudio IDE](https://rstudio.github.io/cheatsheets/rstudio-ide.pdf)
 
-* [ggplot2](https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
+* [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf)
 
 
 ## Resources
