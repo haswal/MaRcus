@@ -60,21 +60,21 @@ ggplot(data = cb_data) +
                y = Volume))
 
 #We need to specify "stat" for it to work
-#stat = "identity" use data values for plotting
+#stat = "identity" uses data values for plotting
 #If multiple values per group, they are summed. 
 ggplot(data = cb_data) +
   geom_bar(aes(x = `Phase (color)`,
                y = Volume),
            stat = "identity")
 
-#More useful to be specific about what to plot
+#Often more useful to be specific about what to plot
 ggplot(data = cb_data) +
   geom_bar(aes(x = `Phase (color)`,
                y = Volume),
            stat = "summary",
            fun = "mean")
 
-#We can flip axes to give more room for axis text
+#We can flip axes to give more room for axis labels
 ggplot(data = cb_data) +
   geom_bar(aes(x = `Phase (color)`,
                y = Volume),
@@ -92,7 +92,7 @@ ggplot(data = cb_data) +
            fun = "mean") +
   coord_flip()
 
-#Plot bars side by side using position = "dodge"
+#Plot bars side-by-side using position = "dodge"
 ggplot(data = cb_data,
        aes(x = `Phase (color)`,
            y = Volume, 
@@ -102,7 +102,7 @@ ggplot(data = cb_data,
            position = "dodge")
 
 #Add errorbars
-#Error bars also needs position = "dodge" to align with bars
+#Error bars also need position = "dodge" to align with bars
 ggplot(data = cb_data,
        aes(x = `Phase (color)`,
            y = Volume, 
