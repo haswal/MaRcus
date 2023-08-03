@@ -9,11 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Instructor: Hasse Walum (hasse.walum@emory.edu)" />
-<meta name="author" content="TA: Aiden Ford (aiden.l.ford@emory.edu)" />
 
+<meta name="date" content="2023-08-03" />
 
-<title>Marcus R Training</title>
+<title>Session 2</title>
 
 <script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -63,7 +62,6 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="home.css" type="text/css" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -355,85 +353,136 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Marcus R Training</h1>
-<h4 class="author">Instructor: Hasse Walum (<a
-href="mailto:hasse.walum@emory.edu"
-class="email">hasse.walum@emory.edu</a>)</h4>
-<h4 class="author">TA: Aiden Ford (<a
-href="mailto:aiden.l.ford@emory.edu"
-class="email">aiden.l.ford@emory.edu</a>)</h4>
+<h1 class="title toc-ignore">Session 2</h1>
+<h4 class="date">August 3, 2023</h4>
 
 </div>
 
 
-<div id="welcome" class="section level2">
-<h2>Welcome!</h2>
-<p>This is the class website. Here you will find posted resources for
-each lesson.</p>
+<div id="agenda" class="section level2">
+<h2>Agenda</h2>
+<ul>
+<li>Create histograms using <code>geom_histogram()</code></li>
+<li>Create bar plots with statistical summaries</li>
+<li>Group bars by variable</li>
+<li><code>geom_boxplot()</code></li>
+<li>Combine plots using the <code>cowplot</code> package</li>
+<li>Export your plots with <code>ggsave()</code></li>
+</ul>
+<!-- ## Script -->
+<!-- You can download the script from session 2 by clicking the link below. -->
+<!-- to add scripts -->
+<!-- ```{r, include = FALSE, eval = FALSE} -->
+<!-- # install and load these packages -->
+<!-- devtools::install_github('yihui/xfun') -->
+<!-- # embed_file() requires a few more packages -->
+<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
+<!-- ``` -->
+<!-- ```{r echo=FALSE} -->
+<!-- # a embed single file -->
+<!-- xfun::embed_file('session_01.R') -->
+<!-- ``` -->
 </div>
-<div id="installing-r-and-rstudio" class="section level2">
-<h2>Installing R and RStudio</h2>
-<p>Before we can get started we need to install <strong>two</strong>
-different software programs, R and RStudio. The software is 100%
-free.</p>
-<div id="start-by-installing-r" class="section level4">
-<h4>Start by installing R:</h4>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<p>Most of what we cover today will be based off of Chapter 3, sections
+3.7 - 3.10 in the R4DS textbook.</p>
+<p>Learn more about the features that the <code>cowplot</code> packages
+has to offer <a href="https://wilkelab.org/cowplot/index.html">here</a>.
+The links under the “articles” dropdown menu are particularly useful,
+e.g. this <a
+href="https://wilkelab.org/cowplot/articles/aligning_plots.html">article
+on aligning plots</a>.</p>
+<p>Read about <code>ggsave()</code> <a
+href="https://sscc.wisc.edu/sscc/pubs/using-r-plots/saving-plots.html">here</a>
+(2.1).</p>
+<p>Here are some third-party packages that you may find fun to test out
+to style your own ggplots:</p>
 <ul>
-<li>Go to <a href="https://cran.r-project.org">cran.r-project.org</a>
+<li><a
+href="https://github.com/karthik/wesanderson"><code>wesanderson</code></a>
+color palettes</li>
+<li><a
+href="https://www.datanovia.com/en/blog/the-a-z-of-rcolorbrewer-palette/"><code>RcolorBrewer</code></a>
+palettes</li>
+<li><a
+href="https://github.com/johannesbjork/LaCroixColoR"><code>LaCroixColoR</code></a>
+color palettes
 <ul>
-<li>Windows users click <strong>Download R for Windows</strong> and on
-the next page <strong>install R for the first time</strong> and finally
-<strong>Download R -4.3.1 for Windows</strong>.</li>
-<li>Mac users click <strong>Download R for macOS</strong> and on the
-next page pick the version matching the OS version you are using (for
-most users <strong>R-4.3.1-x86_64.pkg</strong> will be the right choice,
-unless you are working on a fancy new M1 or M2 mac in which case pick
-<strong>R-4.3.1-arm64.pkg</strong> instead).</li>
-</ul></li>
+<li>This package is on Github only for now (not CRAN), so it has to be
+installed with the code below before you can load and use it:</li>
+</ul>
+<pre class="r"><code>    install.packages(&quot;devtools&quot;)
+    devtools::install_github(&quot;johannesbjork/LaCroixColoR&quot;)</code></pre></li>
 </ul>
 </div>
-<div id="next-we-will-install-rstudio" class="section level4">
-<h4>Next we will install RStudio:</h4>
-<ul>
-<li>Go to the <a
-href="https://posit.co/download/rstudio-desktop/">posit.co</a> download
-page.</li>
-<li>Scroll down until you see a blue rectangle (to the right under the
-header <em>2: Install RStudio</em>) with the text <strong>DOWNLOAD
-RSTUDIO DESKTOP FOR X</strong> where X is the OS of the machine you are
-using. Click to download.<br />
-</li>
-<li>Alternatively, scroll down a bit more and find the right version of
-RStudio for your OS under the header <strong>All
-Installers</strong>.</li>
-</ul>
-</div>
-</div>
-<div id="installing-the-tidyverse" class="section level2">
-<h2>Installing the <code>tidyverse</code></h2>
-<p>The tidyverse is a suite of packages that will allow us to use some
-of the most common data science tools used in R and RStudio. The
-tidyverse doesn’t come built-in with R, so you’ll need to install it by
-doing the following:</p>
-<ul>
-<li>Open up RStudio</li>
-<li>Copy and paste the following into the <em>Console</em> pane of
-RStudio (see the image below as a reference):
-<code>install.packages("tidyverse")</code></li>
-</ul>
-<center>
-<img src="console.png" style="width:90.0%" />
-</center>
-<p><br />
-</p>
-<ul>
-<li>Press the Enter key to run this line of code</li>
-<li>When you’ve installed the package successfully, the console will
-fill up with some code that you don’t have to worry about trying to
-read. It’s just R confirming that the tidyverse is now downloaded.</li>
-</ul>
-<p><br></p>
-<p>Now you’re all set for the first session!</p>
+<div id="homework-exercises" class="section level2">
+<h2>Homework Exercises</h2>
+<p>The homework exercises for this week are below. Use the same data as
+last week when working through the exercises.</p>
+<ol style="list-style-type: decimal">
+<li><p>Recreate the R code necessary to generate the following graphs as
+output using the cowplot package, and specifically plot_grid().</p>
+<p><img src="02_session_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>Create a bar plot showing the <em>median</em> cloudbuddy volume
+for each phase.</p></li>
+<li><p>How are the following two plots different? Which aesthetic, color
+or fill, is more useful for changing the color of bars?</p>
+<pre class="r"><code>ggplot(cb_data, 
+   aes(x = Observer)) +
+  geom_bar(color = &quot;purple&quot;)
+
+ggplot(cb_data, 
+   aes(x = Observer)) +
+  geom_bar(fill = &quot;purple&quot;)</code></pre></li>
+<li><p>Recreate the R code necessary to generate the following plot:</p>
+<p><img src="02_session_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>What happens if you create a bar plot using
+<code>geom_bar()</code> and map <code>x</code> (and no other aesthetic)
+to a continuous variable? Think about why the plot looks the ways it
+does and how it relates to the default behavior of
+<code>geom_bar()</code>.</p></li>
+<li><p>Sometimes when creating plots, the axis labels do not quite fit
+and there is overlap making the text hard to read. There are a few
+different ways to fix this. Check out <a
+href="https://www.statology.org/rotate-axis-labels-ggplot2/">this
+link</a> on how to rotate axis labels and recreate the code to make the
+plot below. What are the <code>hjust</code> and <code>vjust</code>
+options used for?</p>
+<p><img src="02_session_files/figure-html/unnamed-chunk-6-1.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Another option is to change the font size of the axis labels,
+described <a
+href="https://statisticsglobe.com/change-font-size-of-ggplot2-plot-in-r-axis-text-main-title-legend">here</a>.
+Use the plot you just created, but without rotated axis labels. Save the
+plot using <code>ggsave()</code> and set <code>height = 3</code> and
+<code>width = 4</code> and adjust the axis label font size until there
+is no longer any overlap.</p></li>
+<li><p>Pick one of the plots we have created so far and save it (using
+<code>ggsave()</code>) as both a pdf and tiff file (keeping the other
+settings as default). How does the file size compare between these
+exported plots? Open the files in an app that lets you zoom and zoom in
+as much as you can. What do you see? Why is there such a difference
+between different types of image files (check the resources to find the
+answer)?</p></li>
+<li><p>Read chapter 3.9 in the R4DS text book and see if you can create
+a so called Coxcomb chart (which looks a bit like a pie chart; something
+we will learn about how to make later) like the one below.</p>
+<p><img src="02_session_files/figure-html/unnamed-chunk-7-1.png" width="480" style="display: block; margin: auto;" /></p></li>
+<li><p>What does <code>geom_jitter()</code> do? How does it compare to
+<code>geom_point()</code>? Create two plots, one using
+<code>geom_jitter()</code> and one using <code>geom_point()</code> (with
+for example <code>x = Age_in_days</code> and <code>y = Volume</code>)
+and put them next to each other using <code>plot_grid()</code> from the
+<code>cowplot</code> package. Are there differences between the plots?
+Try setting <code>height = 1</code> in <code>geom_jitter()</code> and
+explain what happens.</p></li>
+<li><p>Combine multiple skills that you’ve learned so far (and perhaps a
+few new things) to recreate the plot below. When setting the histogram
+colors, remember the name of the aesthetic we use in this case. Read the
+cowplot documentation to figure out how to combine a plot with facets
+and plots without.</p>
+<p><img src="02_session_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p></li>
+</ol>
 </div>
 
 

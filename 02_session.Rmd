@@ -1,0 +1,204 @@
+---
+title: "Session 2"
+date: August 3, 2023
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Agenda
+
+* Create histograms using `geom_histogram()`
+* Create bar plots with statistical summaries
+* Group bars by variable
+* `geom_boxplot()`
+* Combine plots using the `cowplot` package
+* Export your plots with `ggsave()`
+ 
+
+<!-- ## Script -->
+
+<!-- You can download the script from session 2 by clicking the link below. -->
+
+<!-- to add scripts -->
+
+
+<!-- ```{r, include = FALSE, eval = FALSE} -->
+
+<!-- # install and load these packages -->
+<!-- devtools::install_github('yihui/xfun') -->
+
+<!-- # embed_file() requires a few more packages -->
+<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r echo=FALSE} -->
+<!-- # a embed single file -->
+<!-- xfun::embed_file('session_01.R') -->
+<!-- ``` -->
+
+## Resources
+
+Most of what we cover today will be based off of Chapter 3, sections 3.7 - 3.10 in the R4DS textbook. 
+
+Learn more about the features that the `cowplot` packages has to offer [here](https://wilkelab.org/cowplot/index.html). The links under the "articles" dropdown menu are particularly useful, e.g. this [article on aligning plots](https://wilkelab.org/cowplot/articles/aligning_plots.html).
+
+Read about `ggsave()` [here](https://sscc.wisc.edu/sscc/pubs/using-r-plots/saving-plots.html) (2.1).
+
+Here are some third-party packages that you may find fun to test out to style your own ggplots:
+
+* [`wesanderson`](https://github.com/karthik/wesanderson) color palettes
+* [`RcolorBrewer`](https://www.datanovia.com/en/blog/the-a-z-of-rcolorbrewer-palette/) palettes
+* [`LaCroixColoR`](https://github.com/johannesbjork/LaCroixColoR) color palettes
+    * This package is on Github only for now (not CRAN), so it has to be installed with the code below before you can load and use it:
+    ```{r, eval = FALSE, echo = TRUE}
+        install.packages("devtools")
+        devtools::install_github("johannesbjork/LaCroixColoR")
+    ```
+
+
+## Homework Exercises
+
+The homework exercises for this week are below. Use the same data as last week when working through the exercises. 
+
+
+```{r, include = FALSE}
+library(tidyverse)
+library(readxl)
+
+cb_data <- read_xlsx(path = "CB_data_2023.xlsx",
+                     skip = 11,
+                     na = "-99")
+
+```
+
+1. Recreate the R code necessary to generate the following graphs as output using the cowplot package, and specifically plot_grid().
+
+    ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align="center", fig.height=3.5}
+    p1 <- ggplot(cb_data,
+                 aes(x = Age_in_days,
+                     y = Volume)) +
+      geom_smooth()
+    
+    p2 <- ggplot(cb_data,
+                 aes(x = Age_in_days,
+                     y = Weight)) +
+      geom_smooth()
+    
+    cowplot::plot_grid(p1, p2,
+                       labels = "auto")
+    ```
+
+1. Create a bar plot showing the *median* cloudbuddy volume for each phase.
+
+1. How are the following two plots different? Which aesthetic, color or fill, is more useful for changing the color of bars?
+
+    ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.height=3.5, eval=FALSE}
+ggplot(cb_data, 
+       aes(x = Observer)) +
+  geom_bar(color = "purple")
+    
+    ggplot(cb_data, 
+       aes(x = Observer)) +
+  geom_bar(fill = "purple")
+    ```
+
+1. Recreate the R code necessary to generate the following plot: 
+
+    ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.align="center"}
+    ggplot(data = cb_data,
+           aes(x = Volume)) +
+      geom_histogram(binwidth = 0.4) +
+      facet_wrap(~`Phase (color)`, 
+                 scales = "free") +
+      theme_bw()
+    ```
+
+1. What happens if you create a bar plot using `geom_bar()` and map `x` (and no other aesthetic) to a continuous variable? Think about why the plot looks the ways it does and how it relates to the default behavior of `geom_bar()`.
+
+1. Sometimes when creating plots, the axis labels do not quite fit and there is overlap making the text hard to read. There are a few different ways to fix this. Check out [this link](https://www.statology.org/rotate-axis-labels-ggplot2/) on how to rotate axis labels and recreate the code to make the plot below. What are the `hjust` and `vjust` options used for?  
+
+    ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.width=5, fig.align="center", fig.height=4}
+    ggplot(data = cb_data,
+           aes(x = `Phase (color)`, 
+               y = Volume)) +
+      geom_boxplot() + 
+      theme_classic() +
+      theme(axis.text.x = element_text(angle = 45, 
+                                       vjust = 1, 
+                                       hjust = 1))
+    ```
+
+    Another option is to change the font size of the axis labels, described [here](https://statisticsglobe.com/change-font-size-of-ggplot2-plot-in-r-axis-text-main-title-legend). Use the plot you just created, but without rotated axis labels. Save the plot using `ggsave()` and set `height = 3` and `width = 4` and adjust the axis label font size until there is no longer any overlap. 
+    
+1. Pick one of the plots we have created so far and save it (using `ggsave()`) as both a pdf and tiff file (keeping the other settings as default). How does the file size compare between these exported plots? Open the files in an app that lets you zoom and zoom in as much as you can. What do you see? Why is there such a difference between different types of image files (check the resources to find the answer)? 
+
+1. Read chapter 3.9 in the R4DS text book and see if you can create a so called Coxcomb chart (which looks a bit like a pie chart; something we will learn about how to make later) like the one below.  
+
+    ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.width=5, fig.align="center", fig.height=4}
+    ggplot(data = cb_data, 
+       aes(x = Observer,
+           fill = Observer)) +
+  geom_bar(width = 0.9, 
+           show.legend = FALSE) +
+  coord_polar() +
+      labs(x = NULL, 
+           y = NULL) +
+      theme_minimal()
+    ```
+
+1. What does `geom_jitter()` do? How does it compare to `geom_point()`? Create two plots, one using `geom_jitter()` and one using `geom_point()` (with for example `x = Age_in_days` and `y = Volume`) and put them next to each other using `plot_grid()` from the `cowplot` package. Are there differences between the plots? Try setting `height = 1` in `geom_jitter()` and explain what happens.    
+
+1. Combine multiple skills that you've learned so far (and perhaps a few new things) to recreate the plot below. When setting the histogram colors, remember the name of the aesthetic we use in this case. Read the cowplot documentation to figure out how to combine a plot with facets and plots without. 
+
+    ```{r, warning=FALSE, message=FALSE, echo=FALSE, fig.width=6, fig.align="center", fig.height=6}
+    library(cowplot)
+    
+    p1 <- ggplot(data = cb_data,
+           aes(x = Volume, 
+               fill = `Phase (color)`)) +
+      geom_histogram(binwidth = 0.4, 
+                     show.legend = FALSE) +
+      facet_wrap(~`Phase (color)`, 
+                 scales = "free") +
+      theme_bw() +
+       scale_fill_manual(values = c("1-lightgray" = "lightgray",
+                                "2-darkgray" = "darkgray",
+                                "3-darkorange" = "darkorange",
+                                "4-orange" = "orange",
+                                "5-orangered" = "orangered",
+                                "6-red" = "red"))
+    
+    p2 <- ggplot(cb_data, 
+                 aes(x = Age_in_days,
+                     y = Volume)) +
+      geom_smooth(aes(group = Cloudbuddy), 
+                  se = FALSE, 
+                  linewidth = 0.25,
+                  color = "black") +
+      theme_bw() +
+      labs(x = "Age in days")
+    
+    p3 <- ggplot(data = cb_data,
+           aes(x = `Phase (color)`, 
+               y = Volume)) +
+      geom_bar(stat = "summary",
+               fun = "mean", 
+               color = "black") + 
+      geom_errorbar(stat = "summary",
+                    fun.data = "mean_se", 
+                    width = 0.3) +
+      theme_bw() +
+      theme(axis.text.x = element_text(angle = 45, 
+                                       vjust = 1, 
+                                       hjust = 1))
+    
+    bottom_row <- plot_grid(p2, p3, labels = c('B', 'C'))
+    
+    plot_grid(p1, bottom_row, labels = c('A', ''), ncol = 1)
+    ```
