@@ -57,7 +57,7 @@ cb_data %>%
              y = Weight)) +
   geom_point()
 
-#Seperating conditions with comma same as using "&"
+#Separating conditions with comma same as using "&"
 
 cb_data %>% 
   filter(Age_in_days >= 50 &

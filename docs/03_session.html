@@ -371,19 +371,13 @@ div.tocify {
 <li>Reorder rows using <code>arrange()</code></li>
 <li>Introducing the pipe (<code>%&gt;%</code>) operator</li>
 </ul>
-<!-- ## Script -->
-<!-- You can download the script from session 2 by clicking the link below. -->
+</div>
+<div id="script" class="section level2">
+<h2>Script</h2>
+<p>You can download the script from session 3 by clicking the link
+below.</p>
 <!-- to add scripts -->
-<!-- ```{r, include = FALSE, eval = FALSE} -->
-<!-- # install and load these packages -->
-<!-- devtools::install_github('yihui/xfun') -->
-<!-- # embed_file() requires a few more packages -->
-<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
-<!-- ``` -->
-<!-- ```{r echo=FALSE} -->
-<!-- # a embed single file -->
-<!-- xfun::embed_file('session_02.R') -->
-<!-- ``` -->
+<a href="data:text/plain;base64,I0xvYWRpbmcgbGlicmFyaWVzIApsaWJyYXJ5KHRpZHl2ZXJzZSkKbGlicmFyeShyZWFkeGwpCgojUmVhZGluZyBpbiBkYXRhIHBlciB1c3VhbApjYl9kYXRhIDwtIHJlYWRfeGxzeChwYXRoID0gIkNCX2RhdGFfMjAyMy54bHN4IiwKICAgICAgICAgICAgICAgICAgICAgc2tpcCA9IDExLAogICAgICAgICAgICAgICAgICAgICBuYSA9ICItOTkiKQoKI0ZvciBhbGwgZHBseXIgZnVuY3Rpb25zICh2ZXJicyk6ICAKIy1GaXJzdCBhcmd1bWVudCBpcyBkYXRhCiMtU3Vic2VxdWVudCBhcmd1bWVudHMgZGVzY3JpYmUgd2hhdCB0byBkbwojLVJlc3VsdCBpcyBhIG5ldyBkYXRhIGZyYW1lCiNIZXJlIHVzaW5nIGZpbHRlcigpIHRvIHN1YnNldCAocm93cykgb24gT2JzZXJ2ZXIgcmFJRC0wNwpmaWx0ZXIoY2JfZGF0YSwKICAgICAgIE9ic2VydmVyID09ICJyYUlELTA3IikKCiNUcmFuc2Zvcm1pbmcgZGF0YSBvZnRlbiBpbnZvbHZlcyBtYW55IGRwbHlyIHZlcmJzCiNCZXN0IHdheSB0byBzdHJpbmcgUiBjb21tYW5kcyB0b2dldGhlciBpcyB0byB1c2UgcGlwZTogJT4lIAojS2V5Ym9hcmQgc2hvcnRjdXQ6IGNtZCtzaGlmdCttCiNXaGVuIHVzaW5nIHRoZSBwaXBlLCB0YWJiaW5nIGlzIHJlYWxseSB1c2VmdWwKY2JfZGF0YSAlPiUgCiAgZmlsdGVyKE9ic2VydmVyID09ICJyYUlELTA3IikKCiNQaXBlIHRvIGZpbHRlciwgdGhlbiB2aWV3KCkKY2JfZGF0YSAlPiUgCiAgZmlsdGVyKE9ic2VydmVyID09ICJyYUlELTA3IikgJT4lIAogIHZpZXcoKQoKI1BpcGUgdG8gZmlsdGVyLCB0aGVuIGdncGxvdApjYl9kYXRhICU+JSAKICBmaWx0ZXIoT2JzZXJ2ZXIgPT0gInJhSUQtMDciKSAlPiUgCiAgZ2dwbG90KGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICAgeSA9IFdlaWdodCkpICsKICBnZW9tX3BvaW50KCkKCiNGaWx0ZXIgdXNlcyBjb25kaXRpb25zOiA9PSwgIT0sID4sIDwsID49LCA8PQojQWxsIE9ic2VydmVycyBCVVQgcmFJRC0wNwpjYl9kYXRhICU+JSAKICBmaWx0ZXIoT2JzZXJ2ZXIgIT0gInJhSUQtMDciKSAlPiUgCiAgZ2dwbG90KGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICB5ID0gV2VpZ2h0KSkgKwogIGdlb21fcG9pbnQoYWVzKGNvbG9yID0gT2JzZXJ2ZXIpKQoKI0FnZXMgZ3JlYXRlciB0aGFuIDUwIGRheXMgKGluY2x1c2l2ZSkKY2JfZGF0YSAlPiUgCiAgZmlsdGVyKEFnZV9pbl9kYXlzID49IDUwKSAlPiUgCiAgZ2dwbG90KGFlcyh4ID0gQWdlX2luX2RheXMsCiAgICAgICAgICAgICB5ID0gV2VpZ2h0KSkgKwogIGdlb21fcG9pbnQoKQoKI0ZpbHRlciB1c2luZyBtdWx0aXBsZSBjb25kaXRpb25zCmNiX2RhdGEgJT4lIAogIGZpbHRlcihBZ2VfaW5fZGF5cyA+PSA1MCwgCiAgICAgICAgIE9ic2VydmVyICE9ICJyYUlELTA3IikgJT4lIAogIGdncGxvdChhZXMoeCA9IEFnZV9pbl9kYXlzLAogICAgICAgICAgICAgeSA9IFdlaWdodCkpICsKICBnZW9tX3BvaW50KCkKCiNTZXBhcmF0aW5nIGNvbmRpdGlvbnMgd2l0aCBjb21tYSBzYW1lIGFzIHVzaW5nICImIgoKY2JfZGF0YSAlPiUgCiAgZmlsdGVyKEFnZV9pbl9kYXlzID49IDUwICYKICAgICAgICAgICBPYnNlcnZlciAhPSAicmFJRC0wNyIpICU+JSAKICBnZ3Bsb3QoYWVzKHggPSBBZ2VfaW5fZGF5cywKICAgICAgICAgICAgIHkgPSBXZWlnaHQpKSArCiAgZ2VvbV9wb2ludCgpCgojVXNlIGxvZ2ljYWwgT1IgKHwpIHRvIGNoZWNrIGZvciBlaXRoZXIgY29uZGl0aW9uCmNiX2RhdGEgJT4lIAogIGZpbHRlcihDbG91ZGJ1ZGR5ID09ICJjYklELTAwMSIgfAogICAgICAgICAgIENsb3VkYnVkZHkgPT0gImNiSUQtMDAyIikKCiNTaG9ydGN1dDogJWluJSAKY2JfZGF0YSAlPiUgCiAgZmlsdGVyKENsb3VkYnVkZHkgJWluJSBjKCJjYklELTAwMSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICJjYklELTAwMiIpKQoKI0NhbiBhbHNvIGJlIHVzZWQgd2l0aCAiISIKY2JfZGF0YSAlPiUgCiAgZmlsdGVyKCFDbG91ZGJ1ZGR5ICVpbiUgYygiY2JJRC0wMDEiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgImNiSUQtMDAyIikpCgojQ2Fubm90IHVzZSB2YXJpYWJsZSA9PSBOQSwgbXVzdCB1c2UgaXMubmEoKQpjYl9kYXRhICU+JSAKICBmaWx0ZXIoVm9sdW1lID09IE5BKQoKY2JfZGF0YSAlPiUgCiAgZmlsdGVyKGlzLm5hKFZvbHVtZSkpCgpjYl9kYXRhICU+JSAKICBmaWx0ZXIoIWlzLm5hKFZvbHVtZSkpCgojZHBseXIgdmVyYnMgd2lsbCBub3Qgc2F2ZSBuZXcgZGF0YSwgYXNzaWduIHRvIHNhdmUKY2JfZGF0YV9uZXcgPC0gY2JfZGF0YSAlPiUgCiAgZmlsdGVyKENsb3VkYnVkZHkgJWluJSBjKCJjYklELTAwMSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICJjYklELTAwMiIpKSAKCiNOZXh0IHZlcmIgaXMgYXJyYW5nZSAKI1dpbGwgYXJyYW5nZSBhIGNvbHVtbidzIHZhbHVlcyBpbiBhc2NlbmRpbmcgb3JkZXIgYnkgZGVmYXVsdApjYl9kYXRhICU+JSAKICBhcnJhbmdlKFZvbHVtZSkKCiNUbyB2aWV3IGluIGRlc2NlbmRpbmcgb3JkZXIsIHVzZSBkZXNjKCkKY2JfZGF0YSAlPiUgCiAgYXJyYW5nZShkZXNjKFZvbHVtZSkpCgojVXNlIHNlbGVjdCgpIHRvIHBpY2sgY29sdW1ucyBpbiBkYXRhCiNDYW4gYmUgZG9uZSBieSBuYW1lCiNPdXRwdXQgb3JkZXJlZApjYl9kYXRhICU+JSAKICBzZWxlY3QoV2VpZ2h0LCAKICAgICAgICAgVm9sdW1lLCAKICAgICAgICAgQ2xvdWRidWRkeSkKCiNPciByYW5nZSBvZiBuYW1lcyAKY2JfZGF0YSAlPiUgCiAgc2VsZWN0KEFnZV9pbl9kYXlzOmBQaGFzZSAoY29sb3IpYCkKCiNPciBleGNsdWRlIHJhbmdlCmNiX2RhdGEgJT4lIAogIHNlbGVjdCghQWdlX2luX2RheXM6YFBoYXNlIChjb2xvcilgKQoKI09yIGhlbHBlciBmdW5jdGlvbnMKY2JfZGF0YSAlPiUgCiAgc2VsZWN0KHN0YXJ0c193aXRoKCJXIikpCgpjYl9kYXRhICU+JSAKICBzZWxlY3QoY29udGFpbnMoIl8iKSkKCiNCeSB2YXJpYWJsZSB0eXBlCmNiX2RhdGEgJT4lIAogIHNlbGVjdCh3aGVyZShpcy5udW1lcmljKSkKCmNiX2RhdGEgJT4lIAogIHNlbGVjdCh3aGVyZShpcy5jaGFyYWN0ZXIpKQoKI1VzZSByZW5hbWUoKSB0byByZW5hbWUgY29sdW1ucyAodmFyaWFibGVzKQojbmV3X25hbWUgPSBvbGRfbmFtZQpjYl9kYXRhICU+JSAKICByZW5hbWUoUGhhc2UgPSBgUGhhc2UgKGNvbG9yKWApCgo=" download="session_03.R">Download session_03.R</a>
 </div>
 <div id="cheatsheets" class="section level2">
 <h2>Cheatsheets</h2>
@@ -408,7 +402,7 @@ keyboard shortcut (cmd+shift+m) every time you input the pipe.</p>
 <pre class="r"><code>cb_data %&gt;% 
   filter(Cloudbuddy = &quot;cbID-007&quot;)</code></pre></li>
 <li><p>Recreate the R code necessary to generate the plot below.</p>
-<p><img src="03_session_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<p><img src="03_session_files/figure-html/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p></li>
 <li><p>How many observations are there in <code>cb_data</code> where the
 cloudbuddy Volume is less or equal to one.</p></li>
 <li><p>Use <code>arrange()</code> to show how many cloudbuddies there

@@ -18,28 +18,28 @@ knitr::opts_chunk$set(echo = TRUE)
 * Introducing the pipe (`%>%`) operator
  
 
-<!-- ## Script -->
+## Script
 
-<!-- You can download the script from session 2 by clicking the link below. -->
+You can download the script from session 3 by clicking the link below.
 
 <!-- to add scripts -->
 
 
-<!-- ```{r, include = FALSE, eval = FALSE} -->
+```{r, include = FALSE, eval = FALSE}
 
-<!-- # install and load these packages -->
-<!-- devtools::install_github('yihui/xfun') -->
+# install and load these packages
+devtools::install_github('yihui/xfun')
 
-<!-- # embed_file() requires a few more packages -->
-<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
-<!-- ``` -->
+# embed_file() requires a few more packages
+xfun::pkg_load2(c('base64enc', 'htmltools', 'mime'))
+```
 
 
 
-<!-- ```{r echo=FALSE} -->
-<!-- # a embed single file -->
-<!-- xfun::embed_file('session_02.R') -->
-<!-- ``` -->
+```{r echo=FALSE}
+# a embed single file
+xfun::embed_file('session_03.R')
+```
 
 
 ## Cheatsheets
