@@ -9,11 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Instructor: Hasse Walum (hasse.walum@emory.edu)" />
-<meta name="author" content="TA: Aiden Ford (aiden.l.ford@emory.edu)" />
 
+<meta name="date" content="2023-08-10" />
 
-<title>Marcus R Training</title>
+<title>Session 3</title>
 
 <script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -63,7 +62,6 @@ if (window.hljs) {
 
 
 
-<link rel="stylesheet" href="home.css" type="text/css" />
 <link rel="stylesheet" href="style.css" type="text/css" />
 
 
@@ -358,85 +356,113 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Marcus R Training</h1>
-<h4 class="author">Instructor: Hasse Walum (<a
-href="mailto:hasse.walum@emory.edu"
-class="email">hasse.walum@emory.edu</a>)</h4>
-<h4 class="author">TA: Aiden Ford (<a
-href="mailto:aiden.l.ford@emory.edu"
-class="email">aiden.l.ford@emory.edu</a>)</h4>
+<h1 class="title toc-ignore">Session 3</h1>
+<h4 class="date">August 10, 2023</h4>
 
 </div>
 
 
-<div id="welcome" class="section level2">
-<h2>Welcome!</h2>
-<p>This is the class website. Here you will find posted resources for
-each lesson.</p>
+<div id="agenda" class="section level2">
+<h2>Agenda</h2>
+<ul>
+<li>Data transformation using the <code>dplyr</code> package</li>
+<li>Pick observations by their values with <code>filter()</code></li>
+<li>Pick variables by their names with <code>select()</code></li>
+<li>Reorder rows using <code>arrange()</code></li>
+<li>Introducing the pipe (<code>%&gt;%</code>) operator</li>
+</ul>
+<!-- ## Script -->
+<!-- You can download the script from session 2 by clicking the link below. -->
+<!-- to add scripts -->
+<!-- ```{r, include = FALSE, eval = FALSE} -->
+<!-- # install and load these packages -->
+<!-- devtools::install_github('yihui/xfun') -->
+<!-- # embed_file() requires a few more packages -->
+<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
+<!-- ``` -->
+<!-- ```{r echo=FALSE} -->
+<!-- # a embed single file -->
+<!-- xfun::embed_file('session_02.R') -->
+<!-- ``` -->
 </div>
-<div id="installing-r-and-rstudio" class="section level2">
-<h2>Installing R and RStudio</h2>
-<p>Before we can get started we need to install <strong>two</strong>
-different software programs, R and RStudio. The software is 100%
-free.</p>
-<div id="start-by-installing-r" class="section level4">
-<h4>Start by installing R:</h4>
+<div id="cheatsheets" class="section level2">
+<h2>Cheatsheets</h2>
 <ul>
-<li>Go to <a href="https://cran.r-project.org">cran.r-project.org</a>
-<ul>
-<li>Windows users click <strong>Download R for Windows</strong> and on
-the next page <strong>install R for the first time</strong> and finally
-<strong>Download R -4.3.1 for Windows</strong>.</li>
-<li>Mac users click <strong>Download R for macOS</strong> and on the
-next page pick the version matching the OS version you are using (for
-most users <strong>R-4.3.1-x86_64.pkg</strong> will be the right choice,
-unless you are working on a fancy new M1 or M2 mac in which case pick
-<strong>R-4.3.1-arm64.pkg</strong> instead).</li>
-</ul></li>
+<li><a
+href="https://rstudio.github.io/cheatsheets/data-transformation.pdf">dplyr</a></li>
 </ul>
 </div>
-<div id="next-we-will-install-rstudio" class="section level4">
-<h4>Next we will install RStudio:</h4>
-<ul>
-<li>Go to the <a
-href="https://posit.co/download/rstudio-desktop/">posit.co</a> download
-page.</li>
-<li>Scroll down until you see a blue rectangle (to the right under the
-header <em>2: Install RStudio</em>) with the text <strong>DOWNLOAD
-RSTUDIO DESKTOP FOR X</strong> where X is the OS of the machine you are
-using. Click to download.<br />
-</li>
-<li>Alternatively, scroll down a bit more and find the right version of
-RStudio for your OS under the header <strong>All
-Installers</strong>.</li>
-</ul>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<p>Most of what we talk about this time will be based off of Chapter 5,
+sections 5.2 - 5.4 in the R4DS textbook. Chapter 18 gives more detail
+about the pipe.</p>
 </div>
-</div>
-<div id="installing-the-tidyverse" class="section level2">
-<h2>Installing the <code>tidyverse</code></h2>
-<p>The tidyverse is a suite of packages that will allow us to use some
-of the most common data science tools used in R and RStudio. The
-tidyverse doesn’t come built-in with R, so you’ll need to install it by
-doing the following:</p>
-<ul>
-<li>Open up RStudio</li>
-<li>Copy and paste the following into the <em>Console</em> pane of
-RStudio (see the image below as a reference):
-<code>install.packages("tidyverse")</code></li>
-</ul>
-<center>
-<img src="console.png" style="width:90.0%" />
-</center>
-<p><br />
-</p>
-<ul>
-<li>Press the Enter key to run this line of code</li>
-<li>When you’ve installed the package successfully, the console will
-fill up with some code that you don’t have to worry about trying to
-read. It’s just R confirming that the tidyverse is now downloaded.</li>
-</ul>
-<p><br></p>
-<p>Now you’re all set for the first session!</p>
+<div id="homework-exercises" class="section level2">
+<h2>Homework Exercises</h2>
+<p>The homework exercises for this week are below. Use the same data as
+last two weeks when working through the exercises. Make sure you use the
+keyboard shortcut (cmd+shift+m) every time you input the pipe.</p>
+<ol style="list-style-type: decimal">
+<li><p>Fix the code below so that it runs without error.</p>
+<pre class="r"><code>cb_data %&gt;% 
+  filter(Cloudbuddy = &quot;cbID-007&quot;)</code></pre></li>
+<li><p>Recreate the R code necessary to generate the plot below.</p>
+<p><img src="03_session_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p></li>
+<li><p>How many observations are there in <code>cb_data</code> where the
+cloudbuddy Volume is less or equal to one.</p></li>
+<li><p>Use <code>arrange()</code> to show how many cloudbuddies there
+are in <code>cb_data</code>.</p></li>
+<li><p>Many times when working with data, we need to use multiple
+different functions to achieve the desired end goal. One option is to
+create intermediate objects for each step of the analysis process, as
+can be seen below. A better alternative is to use the pipe
+<code>%&gt;%</code> and link together different functions. Use the pipe
+method to convert the code below to a pipeline.</p>
+<pre class="r"><code>cb_data_2 &lt;- filter(cb_data,
+                `Phase (color)` %in% c(&quot;1-lightgray&quot;,
+                                       &quot;6-red&quot;
+                                       ))
+cb_data_3 &lt;- select(cb_data_2, 
+                    `Phase (color)`,
+                    Volume)
+
+cb_data_4 &lt;- arrange(cb_data_3,
+                     desc(Volume))
+
+cb_data_5 &lt;- rename(cb_data_4,
+                    Phase = `Phase (color)`)
+
+view(cb_data_5)</code></pre></li>
+<li><p>Find all observations where the cloudbuddy Weight is more than
+ten times the Volume.</p></li>
+<li><p>Run the code below and explain why the result looks the way it
+does. What would you change to achieve more meaningful output?</p>
+<pre class="r"><code>cb_data %&gt;% 
+  filter(Observer == &quot;raID-01&quot;, 
+         Observer == &quot;raID-02&quot;)</code></pre></li>
+<li><p>How many observations have a Weight greater than 4 but less than
+5.</p></li>
+<li><p>Are there any observations in <code>cb_data</code> where both
+Weight and Volume are missing? Can you find the answer in more than one
+way?</p></li>
+<li><p>Find the youngest age for which Volume is greater than 6. Does it
+matter what order you use the functions?</p></li>
+<li><p>Run the code below. Does the result surprise you? How do the
+select helpers deal with upper and lower case by default? How can you
+change that default?</p>
+<pre class="r"><code>cb_data %&gt;% 
+  select(contains(&quot;DAYS&quot;))</code></pre></li>
+<li><p>Select all numeric columns in <code>cb_data</code> using at least
+three different ways.</p></li>
+<li><p>Create an analysis pipeline that first picks the first five
+cloudbuddies (based on how cloudbuddies are numbered) and the last three
+phases, then changes the <code>Age_in_days</code> variable name to
+<code>Age</code>, then orders the data by <code>Weight</code> (ascending
+order), then selects the <code>Age</code>, <code>Weight</code> and
+<code>Phase (color)</code> columns, and finally shows the data using
+<code>view()</code>.</p></li>
+</ol>
 </div>
 
 

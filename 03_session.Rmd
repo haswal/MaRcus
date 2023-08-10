@@ -1,0 +1,141 @@
+---
+title: "Session 3"
+date: August 10, 2023
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Agenda
+
+* Data transformation using the `dplyr` package 
+* Pick observations by their values with `filter()` 
+* Pick variables by their names with `select()`
+* Reorder rows using `arrange()`
+* Introducing the pipe (`%>%`) operator
+ 
+
+<!-- ## Script -->
+
+<!-- You can download the script from session 2 by clicking the link below. -->
+
+<!-- to add scripts -->
+
+
+<!-- ```{r, include = FALSE, eval = FALSE} -->
+
+<!-- # install and load these packages -->
+<!-- devtools::install_github('yihui/xfun') -->
+
+<!-- # embed_file() requires a few more packages -->
+<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r echo=FALSE} -->
+<!-- # a embed single file -->
+<!-- xfun::embed_file('session_02.R') -->
+<!-- ``` -->
+
+
+## Cheatsheets
+
+* [dplyr](https://rstudio.github.io/cheatsheets/data-transformation.pdf)
+
+
+## Resources
+
+Most of what we talk about this time will be based off of Chapter 5, sections 5.2 - 5.4 in the R4DS textbook. Chapter 18 gives more detail about the pipe.  
+
+
+## Homework Exercises
+
+The homework exercises for this week are below. Use the same data as last two weeks when working through the exercises. Make sure you use the keyboard shortcut (cmd+shift+m) every time you input the pipe.
+
+
+```{r, include = FALSE}
+library(tidyverse)
+library(readxl)
+
+cb_data <- read_xlsx(path = "CB_data_2023.xlsx",
+                     skip = 11,
+                     na = "-99")
+
+```
+
+1. Fix the code below so that it runs without error.
+
+    ```{r, warning=FALSE, message=FALSE, eval=FALSE}
+    cb_data %>% 
+      filter(Cloudbuddy = "cbID-007")
+    ```
+
+1. Recreate the R code necessary to generate the plot below. 
+
+    ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.height=3.5, echo=FALSE}
+cb_data %>% 
+      filter(Observer %in% c("raID-02",
+                             "raID-04",
+                             "raID-06")) %>% 
+      ggplot(aes(x = Age_in_days,
+                 y = Volume)) +
+      geom_point(aes(color = Observer)) +
+      theme_minimal()
+    
+    ```
+
+1. How many observations are there in `cb_data` where the cloudbuddy Volume is less or equal to one. 
+
+1. Use `arrange()` to show how many cloudbuddies there are in `cb_data`.
+
+1. Many times when working with data, we need to use multiple different functions to achieve the desired end goal. One option is to create intermediate objects for each step of the analysis process, as can be seen below. A better alternative is to use the pipe ` %>% ` and link together different functions. Use the pipe method to convert the code below to a pipeline. 
+
+    ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.height=3.5, eval=FALSE}
+cb_data_2 <- filter(cb_data,
+                    `Phase (color)` %in% c("1-lightgray",
+                                           "6-red"
+                                           ))
+    cb_data_3 <- select(cb_data_2, 
+                        `Phase (color)`,
+                        Volume)
+    
+    cb_data_4 <- arrange(cb_data_3,
+                         desc(Volume))
+    
+    cb_data_5 <- rename(cb_data_4,
+                        Phase = `Phase (color)`)
+    
+    view(cb_data_5)
+    ```
+
+1. Find all observations where the cloudbuddy Weight is more than ten times the Volume. 
+
+1. Run the code below and explain why the result looks the way it does. What would you change to achieve more meaningful output? 
+
+    ```{r, warning=FALSE, message=FALSE, eval=FALSE}
+    cb_data %>% 
+      filter(Observer == "raID-01", 
+             Observer == "raID-02")
+    ```
+
+1. How many observations have a Weight greater than 4 but less than 5.
+
+1. Are there any observations in `cb_data` where both Weight and Volume are missing? Can you find the answer in more than one way?
+
+1. Find the youngest age for which Volume is greater than 6. Does it matter what order you use the functions? 
+
+1. Run the code below. Does the result surprise you? How do the select helpers deal with upper and lower case by default? How can you change that default?
+
+    ```{r, warning=FALSE, message=FALSE, eval=FALSE}
+    cb_data %>% 
+      select(contains("DAYS"))
+    ```
+
+1. Select all numeric columns in `cb_data` using at least three different ways.
+
+1. Create an analysis pipeline that first picks the first five cloudbuddies (based on how cloudbuddies are numbered) and the last three phases, then changes the `Age_in_days` variable name to `Age`, then orders the data by `Weight` (ascending order), then selects the `Age`, `Weight` and `Phase (color)` columns, and finally shows the data using `view()`. 
+
