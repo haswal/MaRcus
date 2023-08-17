@@ -18,7 +18,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Slides
 
-The link to the slides will be made available after the session.
+Here is the link to Desirée's slides:
+
+[https://docs.google.com/presentation/u/0/d/1wk3ysJnE4-yNdJG-kDZlG9m418k6Dygy4WwlABQ7hjs/edit?pli=1](https://docs.google.com/presentation/u/0/d/1wk3ysJnE4-yNdJG-kDZlG9m418k6Dygy4WwlABQ7hjs/edit?pli=1)
 
 <!-- to add scripts -->
 
