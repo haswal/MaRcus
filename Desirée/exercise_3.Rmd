@@ -1,0 +1,93 @@
+---
+title: "Palmer Penguins Report, exercise 3"
+output: html_document
+date: "2023-08-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+library(ggplot2)
+penguins <- read_csv("data/penguins.csv")
+```
+
+In this report, we showcase the relationship between measurments taken of various penguin species in Antarctica. 
+
+## Exploring the data
+
+The `penguins` dataset was originally sourced from observations collected at the Palmer Station in Antarctica. The dataset is shown below. It contains **`r nrow(penguins)`** rows.
+
+```{r}
+penguins
+```
+
+### Inspecting missing values
+
+At first glance, it appears that the dataset has some variables with missing values. Below we use the code chunk to explore which observations lack measurement for `body_mass_g`. Are there any other variables with missing values? 
+
+```{r missing-values}
+filter(penguins, is.na(body_mass_g))
+```
+
+## Visualization
+
+The best way to examine the data is through visualizing the relationship between its variables. The plots below tell us a bit more about the penguin species in the dataset. 
+
+## Penguin bills
+
+Let's examine the data with a plot. We will focus here on the relationship between bill length and bill depth. 
+
+```{r}
+ggplot(
+  data = species_bills,
+  mapping = aes(x = bill_length_mm, y = bill_depth_mm, color = species)
+) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  labs(
+    title = "Within species, longer bills are deeper",
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)"
+  )
+```
+
+We display the distribution of the penguin bill length below.
+
+```{r plot1, message=FALSE, warning=FALSE}
+ggplot(
+  data = species_bills,
+  mapping = aes(x = bill_length_mm)
+) +
+  geom_histogram() + 
+  theme_minimal() +
+  labs(
+    x = "Bill length (mm)"
+  )
+```
+
+## Penguin mass vs. flipper length
+
+We could also examine the relationship between the other penguins measurements. The plot below shows how body mass and flipper length are related:
+
+```{r plot1, message=FALSE, warning=FALSE}
+mass_flipper <- ggplot(data = penguins, 
+                       aes(x = flipper_length_mm,
+                           y = body_mass_g)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 3,
+             alpha = 0.8) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(title = "Penguin size, Palmer Station LTER",
+       subtitle = "Flipper length and body mass for Adelie, Chinstrap and Gentoo Penguins",
+       x = "Flipper length (mm)",
+       y = "Body mass (g)",
+       color = "Penguin species",
+       shape = "Penguin species") 
+
+mass_flipper
+```
+
+Once again, we find a positive relationship between the two variables. We also observe that the the Gentoo species of penguin is the largest of the three, with the Chinstrap and Adelie species having comparable mass to flipper length ratios. 

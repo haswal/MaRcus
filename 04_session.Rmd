@@ -1,0 +1,116 @@
+---
+title: "Session 4"
+date: August 17, 2023
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Agenda
+
+* Introduce R Markdown to create a report that combines text, code, and output
+* Use markdown syntax to add headers, formatted text, images, and more
+* Create code chunks to embed R code in your report
+* Debug common R Markdown errors
+* Add interactivity with HTML widgets
+
+## Slides
+
+The link to the slides will be made available after the session.
+
+<!-- to add scripts -->
+
+<!-- ```{r script-setup, include = FALSE, eval = FALSE} -->
+<!-- # install and load these packages -->
+<!-- devtools::install_github('yihui/xfun') -->
+
+<!-- # embed_file() requires a few more packages -->
+<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
+<!-- ``` -->
+
+<!-- ```{r file-embeds, echo=FALSE} -->
+<!-- # a embed single file -->
+<!-- xfun::embed_file("Desirée/exercise_1.Rmd") -->
+<!-- xfun::embed_file("Desirée/exercise_2.Rmd") -->
+<!-- xfun::embed_file("Desirée/exercise_3.Rmd") -->
+<!-- xfun::embed_file("Desirée/penguins.csv") -->
+<!-- ``` -->
+
+## Cheatsheets
+
+* [rmarkdown](https://rstudio.github.io/cheatsheets/rmarkdown.pdf){target="_blank"} 
+
+
+## Resources
+
+<!-- For this session, you’ll need to install the following packages: -->
+
+<!-- * `rmarkdown` (already comes built-in with RStudio, but it’s good to re-install every once in a while to update it) -->
+<!-- * `tufte` -->
+<!-- * `distill` -->
+<!-- * `plotly` -->
+<!-- * `leaflet` -->
+<!-- * `DT` -->
+<!-- * `reactable` -->
+
+The R Markdown parts of the R4DS textbook are [Chapters 27 and 29](https://r4ds.had.co.nz/r-markdown.html){target="_blank"}. 
+
+For a deeper dive into R Markdown, the official R Markdown text is [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/){target="_blank"}. It is most useful to have as a reference. 
+
+Another great reference text for R Markdown that contains examples of many R Markdown features is [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/){target="_blank"}.  
+
+I also recommend checking out [RStudio website for R Markdown](https://rmarkdown.rstudio.com/index.html){target="_blank"}. The Getting Started and Gallery pages gives a visual overview of many of the things you can build with R Markdown. 
+
+
+## Homework Exercises
+
+
+<div>
+```{r echo=FALSE}
+# a embed single file
+xfun::embed_file("hw4-exercise1.Rmd")
+```
+</div>
+
+<div>
+```{r echo=FALSE}
+# a embed single file
+xfun::embed_file("cloudbuddy.png")
+```
+</div> 
+ 
+  
+1. **Recreate a report**: Download the R Markdown document and image above and store them in a new R Project alongside the cloudbuddy data from the course. Use the downloaded document as a starting point and modify it so that it ends up looking like [this final report](https://melodic-kashata-42b883.netlify.app/){target="_blank"}. Here are some tips:
+
+    * The report purposefully contains a few errors that prevent the document from knitting. You should start by fixing these first. 
+
+    * There are ~15 other modifications you'll need to make. Aside from loading packages and reading in data, you should not need to make substantial edits to the existing source code within the chunks. You also should not need to delete existing code chunks. There are a couple features which you may have to look up how to do using outside resources:
+
+      1. Add appropriate headers  
+      2. A floating table of contents  
+      3. Use links  
+      4. Add footnotes 
+      5. Add a centered image with 80% width   
+      6. Use inline code  
+      7. Make table output interactive 
+      8. Add white space between all sections  
+      9. Create tabsets (*hint*: see [this resource](https://bookdown.org/yihui/rmarkdown-cookbook/){target="_blank"})
+      10. Turn one of the ggplots into an interactive plot  
+      11. Allow code to be toggled between shown and hidden 
+      12. Use code chunk options to control whether code and/or output can be shown
+      13. Suppress all warnings and messages
+      14. Adding the `flatly` theme to your report
+      15. **Attempt something new**: An important part of learning R is teaching yourself how to do something that you haven't explicitly been taught. At the end of the cloudbuddy report is an empty code chunk. Within this code chunk, do something new with the cloudbuddy data that you haven't tried in previous sessions or exercises. For example, this can be creating a new table using a dplyr function, attempting to customize a ggplot in a new way. Attempts that end in failure are okay, and exploring a new function or package is encouraged!  
+
+    * Save your modified report as `session-04-cloudbuddy.Rmd`.
+    * Here is an [annotated version](https://melodic-kashata-42b883.netlify.app/annotated.jpg){target="_blank"} of the final report to help you spot some of the differences. 
+    
+2. **Render a tufte document:** Make sure the tufte R package is installed. Make changes the YAML of your modified report so that it knits as a tufte document. Save your tufte report as `session-04-tufte.Rmd`.  
+
+
+3. **Knit to PDF**: Create one new R Markdown document from the new document icon in the IDE. Knit it to a PDF document. (You may need to install LaTeX in order to build the PDF output — RStudio will prompt you if this is necessary, or install the tinytex package and then run this code: `tinytex::install_tinytex()`).  
+    * Save your PDF as `session-04-pdf.Rmd`.  
+    * What happens if you try to knit `session-04-cloudbuddy.Rmd` to a PDF document? Can you get it to work?  
+   

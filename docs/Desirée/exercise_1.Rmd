@@ -1,0 +1,33 @@
+---
+title: "Palmer Penguins Report, exercise 1"
+output: html_document
+date: "2023-08-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dplyr)
+```
+
+```{r}
+penguins <- read_csv("data/penguins.csv")
+```
+
+In this report, we showcase the relationship between measurements taken of various penguin species in Antarctica. 
+
+## Exploring the data
+
+The `penguins` dataset was originally sourced from observations collected at the Palmer Station in Antarctica. The dataset is shown below. It contains **`r nrow(penguins)`** rows.
+
+```{r}
+penguins
+``
+
+### Inspecting missing values
+
+At first glance, it appears that the dataset has some variables with missing values. Below we use the code chunk to explore which observations lack measurement for `body_mass_g`. Are there any other variables with missing values? 
+  
+```{r missing-values}
+filter(penguins, is.na(body_mass_g))
+```
