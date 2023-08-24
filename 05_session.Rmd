@@ -16,18 +16,28 @@ knitr::opts_chunk$set(echo = TRUE)
 * Create (grouped) summaries with `summarise()` 
 
 
-<!-- ## Script -->
+## Script
 
+You can download the session 5 script by clicking the link below.
 
 <!-- to add scripts -->
 
-<!-- ```{r script-setup, include = FALSE, eval = FALSE} -->
-<!-- # install and load these packages -->
-<!-- devtools::install_github('yihui/xfun') -->
 
-<!-- # embed_file() requires a few more packages -->
-<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
-<!-- ``` -->
+```{r, include = FALSE, eval = FALSE}
+
+# install and load these packages
+devtools::install_github('yihui/xfun')
+
+# embed_file() requires a few more packages
+xfun::pkg_load2(c('base64enc', 'htmltools', 'mime'))
+```
+
+
+
+```{r echo=FALSE}
+# a embed single file
+xfun::embed_file('session_05.R')
+```
 
 
 

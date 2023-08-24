@@ -77,7 +77,8 @@ cb_data %>%
 
 #What happens here?
 cb_data %>% 
-  mutate(mean_Age = mean(Age_in_days))
+  mutate(mean_Age = mean(Age_in_days)) %>% 
+  view()
 
 #Next verb is summarise (or summarize)
 #Used to calculate summary statistics
@@ -89,7 +90,6 @@ cb_data %>%
   summarise(mean_Age = mean(Age_in_days))
 
 #Summarise is most useful together with group_by
-#Grouping shown in output
 cb_data %>% 
   group_by(`Phase (color)`) %>% 
   summarise(mean_Age = mean(Age_in_days))
@@ -123,7 +123,7 @@ cb_data %>%
   group_by(`Phase (color)`) %>% 
   summarise(mean(Volume))
 
-#NAs are "contagious"; if any NA all calculations will be NA
+#NAs are "contagious"; if any NA calculations will be NA
 #Solution with filter
 cb_data %>% 
   filter(!is.na(Volume)) %>% 
