@@ -1,0 +1,176 @@
+---
+title: "Session 5"
+date: August 24, 2023
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Agenda
+
+* dplyr continued
+* Create new variables with `mutate()`
+* Group data using `group_by()`
+* Create (grouped) summaries with `summarise()` 
+
+
+<!-- ## Script -->
+
+
+<!-- to add scripts -->
+
+<!-- ```{r script-setup, include = FALSE, eval = FALSE} -->
+<!-- # install and load these packages -->
+<!-- devtools::install_github('yihui/xfun') -->
+
+<!-- # embed_file() requires a few more packages -->
+<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
+<!-- ``` -->
+
+
+
+
+## Resources
+
+We will continue to talk about things covered in Chapter 5, this time sections 5.5 - 5.7. 
+
+The `kableExtra` package is great for styling tables created by for example `summarise()`. Information about this package can be found [here](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html).
+
+
+## Homework Exercises
+
+The session 5 homework is below. All code solutions should be completed using **one** (sometimes rather long) pipeline. 
+
+```{r, include = FALSE}
+library(tidyverse)
+library(readxl)
+library(kableExtra)
+
+cb_data <- read_xlsx(path = "CB_data_2023.xlsx",
+                     skip = 11,
+                     na = "-99")
+
+```
+
+1. Recreate the code to make the plot below. Make sure your code includes the fix we talked about during the Thursday session to correct the Weight observations made by `raID-07`.
+
+    ```{r message=FALSE, warning=FALSE, echo=FALSE, fig.width=5, fig.align="center", fig.height=3.6}
+    cb_data %>% 
+      mutate(Weight_fixed = ifelse(Observer == "raID-07",
+                                   Weight * 1000,
+                                   Weight),
+             Ws = sqrt(Weight_fixed)) %>% 
+      ggplot(aes(x = Ws,
+                 y = Volume)) +
+      geom_point() +
+      theme_minimal() +
+      xlab(expression(sqrt(Weight)))
+
+    ```
+
+1. Use `group_by()` and `mutate()` to calculate the median Volume per Observer, and call the new column `median_Volume`.
+
+1. Find the largest Volume measurement per phase, using `group_by()`, `summarise()` and `max()`. 
+
+1. How many observations per phase has a Weight less than 10 grams? 
+
+1. Mean-center (subtract the mean from all the individual observations) the `Weight` variable (corrected). What is the mean of this new variable?
+
+1. Mean-center the Volume variable for each phase separately.
+
+1. Recreate the plot below, but instead of asking `geom_bar()` and `geom_errorbar()` to calculate the mean and the standard error, calculate these values yourself using `group_by()` and `summarise()`. Once these summary statistics are calculated, pipe to `ggplot()` and add the code necessary to produce the plot. Use google to figure out how to calculate standard errors and how to use pre-calculated values with `geom_errorbar()`.  
+
+    ```{r message=FALSE, warning=FALSE, echo=FALSE, fig.width=5, fig.align="center", fig.height=3.6}
+    cb_data %>% 
+      group_by(`Phase (color)`) %>% 
+    summarise(mean = mean(Volume, na.rm = TRUE),
+              sd = sd(Volume, na.rm = TRUE),
+              n = n(),
+              sterr = sd/sqrt(n)) %>% 
+  ggplot(aes(x = `Phase (color)`,
+             y = mean, 
+             fill = `Phase (color)`)) +
+  geom_bar(stat = "identity", 
+           color = "black",
+           show.legend = FALSE) +
+  geom_errorbar(aes(ymin = mean-sterr, 
+                    ymax = mean+sterr),
+                width = 0.3) +
+  ylab("Mean Volume (+/- Standard Error)") +
+      theme_minimal() +
+       scale_fill_manual(values = c("1-lightgray" = "lightgray",
+                                "2-darkgray" = "darkgray",
+                                "3-darkorange" = "darkorange",
+                                "4-orange" = "orange",
+                                "5-orangered" = "orangered",
+                                "6-red" = "red")) 
+
+    ```
+
+1. Using the plot above as a starting point, create two new plots; one with errorbars representing the median absolute deviation and one with errorbars representing 95% confidence intervals. 
+
+1. During session 4, we talked about how to use the `DT` package to create interactive tables. These are perhaps most suited for large tables where showing all information would be problematic without the ability to produced paged, clickable tables. Many times when working in R we produce smaller tables, which is often the case when working `group_by()` and `summarise()` for example. Out of the box, these tables don't look very good when knitting a html document. Check the resources and see if you can reproduce the code necessary to make the table below. 
+
+
+    ```{css, echo=FALSE}
+table tr td p {
+  margin: 4px;
+}
+
+thead p {
+  margin: 4px;
+}
+
+caption p {
+  margin: 0px;
+}
+
+    ```
+
+    ```{r, echo=FALSE}
+cb_data %>% 
+      group_by(`Phase (color)`) %>% 
+      summarise(mean = round(mean(Volume, na.rm = TRUE), 2),
+                stdev = round(sd(Volume, na.rm = TRUE), 2),
+                n = n()) %>% 
+      kbl(caption = "Table 1: Cloudbuddy Volume") %>% 
+      kable_classic(full_width = F) %>% 
+      row_spec(1, color = "black", background = "lightgray") %>% 
+      row_spec(2, color = "black", background = "darkgray") %>% 
+      row_spec(3, color = "black", background = "darkorange") %>% 
+      row_spec(4, color = "black", background = "orange") %>% 
+      row_spec(5, color = "black", background = "orangered") %>% 
+      row_spec(6, color = "black", background = "red") 
+      
+      
+    ```
+
+1. Calculate the difference in mean Volume between observations younger than the median age and observations older than the median age. 
+
+1. Focusing on the first two observers, calculate the proportion of observations done per phase by each observer out of the total number of observations made by each observer. When you are done, the output should look like the table below.
+
+    ```{r, echo=FALSE, message=FALSE}
+    cb_data %>%
+      filter(Observer %in% c("raID-01",
+                             "raID-02")) %>% 
+  group_by(Observer, `Phase (color)`) %>% 
+  summarise(n_phase = n()) %>% 
+  group_by(Observer) %>% 
+  mutate(all_n = sum(n_phase),
+         Proportion = n_phase / all_n) %>%
+      select(Observer, `Phase (color)`, Proportion) %>% 
+      kbl() %>% 
+      kable_paper("hover", full_width = F)
+      
+    ```
+
+
+
+
+
+
+ 
+
+   
