@@ -13,7 +13,7 @@
 
 <title>hw4-exercise1.knit</title>
 
-<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
@@ -347,6 +347,9 @@ div.tocify {
     <li>
       <a href="05_session.html">Session 5</a>
     </li>
+    <li>
+      <a href="06_session.html">Session 6</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -401,8 +404,8 @@ scale_color_manual(values = c(&quot;1-lightgray&quot; = &quot;lightgray&quot;,
 theme_minimal() +
 labs(x = &quot;Age in days&quot;, 
      title = &quot;Cloudbuddy volume over time&quot;)</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula
-## = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y
+## ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <pre><code>## Warning: Removed 10 rows containing non-finite values
 ## (`stat_smooth()`).</code></pre>
 <pre><code>## Warning: Removed 10 rows containing missing values
@@ -436,8 +439,8 @@ labs(x = &quot;Age in days&quot;,
               color = &quot;black&quot;) +
   theme_minimal() +
   labs(x = &quot;Age in days&quot;)</code></pre>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and
-## formula = &#39;y ~ x&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula =
+## &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 10 rows containing non-finite values
 ## (`stat_smooth()`).</code></pre>
 <pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
@@ -457,10 +460,10 @@ labs(x = &quot;Age in days&quot;,
 <pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
 ## : There are other near singularities as well. 1887</code></pre>
 <pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-## : Chernobyl! trL&gt;n 5
+## : Chernobyl! trL&gt;n 6
 
 ## Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
-## : Chernobyl! trL&gt;n 5</code></pre>
+## : Chernobyl! trL&gt;n 6</code></pre>
 <pre><code>## Warning in sqrt(sum.squares/one.delta): NaNs produced</code></pre>
 <pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric = parametric,
 ## : span too small.  fewer data values than degrees of freedom.</code></pre>

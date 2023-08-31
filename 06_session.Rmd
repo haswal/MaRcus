@@ -1,0 +1,48 @@
+---
+title: "Session 6"
+date: August 31, 2023
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Agenda
+
+* Tidying data using the `tidyr` package
+* Define "tidy" data
+* Make your data "longer" with `pivot_longer()`
+* Make your data "wider" with `pivot_wider()`
+* Split variable using `separate()`
+* Combine variables using `unite()`
+
+
+## Script
+
+Since there will be no live coding session this week, no script is provided. Instead, you will learn about tidying data by self-studying the textbook. 
+
+
+## Cheatsheets
+
+* [tidyr](https://rstudio.github.io/cheatsheets/tidyr.pdf)
+
+## Resources
+
+This week we will go through chapter 12 in the R4DS textbook. 
+
+The most important thing to understand this week is pivoting (`pivot_longer()` and `pivot_wider()`). The concept of pivoting is rather straight-forward, but I think a visualization of the process can be helpful when first learning about these methods. Therefore, I created an animation going through the different steps of `pivot_longer()` and it can be found [here](https://haswal.github.io/pivot/). 
+
+
+## Homework Exercises
+
+Feel free to complete all exercises in chapter 12 of the textbook. During the Tuesday homework session we will however focus on the following exercises:
+
+* 12.2.1: Exercise 3 
+* 12.3.3: Exercises 2 and 4
+* 12.4.3. Exercises 1-3
+* 12.5.1: Exercises 1 and 2
+* 12.6.1: Exercises 1-4
+ 
+
+   
