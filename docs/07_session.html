@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+<meta name="date" content="2023-09-07" />
+
+<title>Session 7</title>
+
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Marcus R Training</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Getting Started</a>
+</li>
+<li>
+  <a href="resources.html">Resources</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Sessions
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_session.html">Session 1</a>
+    </li>
+    <li>
+      <a href="02_session.html">Session 2</a>
+    </li>
+    <li>
+      <a href="03_session.html">Session 3</a>
+    </li>
+    <li>
+      <a href="04_session.html">Session 4</a>
+    </li>
+    <li>
+      <a href="05_session.html">Session 5</a>
+    </li>
+    <li>
+      <a href="06_session.html">Session 6</a>
+    </li>
+    <li>
+      <a href="07_session.html">Session 7</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Session 7</h1>
+<h4 class="date">September 7, 2023</h4>
+
+</div>
+
+
+<div id="agenda" class="section level2">
+<h2>Agenda</h2>
+<ul>
+<li>Manipulating strings with the <code>stringr</code> package</li>
+<li>Introducing regular expressions</li>
+<li>Combine two data sets into one with <code>*_join()</code>
+functions</li>
+</ul>
+<!-- ## Script -->
+<!-- You can download the script from session 3 by clicking the link below. -->
+<!-- ```{r, include = FALSE, eval = FALSE} -->
+<!-- # install and load these packages -->
+<!-- devtools::install_github('yihui/xfun') -->
+<!-- # embed_file() requires a few more packages -->
+<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
+<!-- ``` -->
+<!-- ```{r echo=FALSE} -->
+<!-- # a embed single file -->
+<!-- xfun::embed_file('session_03.R') -->
+<!-- ``` -->
+</div>
+<div id="cheatsheets" class="section level2">
+<h2>Cheatsheets</h2>
+<ul>
+<li><a
+href="https://rstudio.github.io/cheatsheets/strings.pdf">stringr</a></li>
+</ul>
+<!-- * [regex](https://adprice.fedorapeople.org/regular-expressions-cheat-sheet-v1.pdf) -->
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<p>Content for session 7 will be based off of chapters 13 and 14 in the
+R4DS textbook.</p>
+<p>Learning regular expressions (regex) is a bit challenging and
+therefore having good learning tools is important. The strings chapter
+the textbook is a good start, but I find it best to practice regex using
+interactive online tools. This link is a good resource and will teach
+you regex basics as well as let you practice interactively (I visit this
+site occasionally and learn something new every time): <a
+href="https://regexone.com">https://regexone.com</a></p>
+<p>Several gamified versions of regex learning tools are available
+online. <a href="https://regexcrossword.com">Here</a> is a link to a
+collection of regex crossword puzzles.</p>
+</div>
+<div id="homework-exercises" class="section level2">
+<h2>Homework Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>What does <code>str_wrap</code> do? Can you show how it works by
+first creating a ggplot and giving it a long title?</p></li>
+<li><p>During the Thursday session I showed you have to use
+<code>$</code> as way to specify the end of a string in regex. But what
+if you want to match a <code>$</code> character? For example, how do you
+remove the <code>$</code> in the string <code>$1200</code>. The answer
+can be found <a
+href="https://stackoverflow.com/questions/27721008/how-do-i-deal-with-special-characters-like-in-my-regex">here</a>.
+Use <code>str_replace()</code> to give it a try.</p></li>
+<li><p>Go through the regex crossword tutorial found <a
+href="https://regexcrossword.com/tutorial/1">here</a> (5 exercises) and
+then solve the beginner crosswords at <a
+href="https://regexcrossword.com/challenges/beginner">https://regexcrossword.com/challenges/beginner</a>.</p></li>
+<li><p>When would you use <code>str_replace_all()</code> instead of
+<code>str_replace()</code>?</p></li>
+<li><p>Install and load the <code>babynames</code> <a
+href="https://github.com/hadley/babynames">package</a> and use your data
+science skills to investigate a few different (at least two) naming
+trends over time. Below is an example where I look at the proportion of
+babies given a name starting with <strong>Ha</strong> (yes, as in Hasse)
+over the years.</p>
+<pre class="r"><code>library(babynames)
+
+ babynames %&gt;% 
+   filter(str_detect(name, &quot;^Ha&quot;)) %&gt;% 
+   group_by(year) %&gt;% 
+   summarise(prop_Ha = sum(prop)) %&gt;% 
+   ggplot(aes(x = year,
+              y = prop_Ha)) +
+   geom_line() +
+   theme_minimal() +
+   labs(x = &quot;Year&quot;,
+        y = &quot;Percent of babies&quot;,
+        title = &quot;Baby names beginning with Ha&quot;) +
+   scale_y_continuous(labels = scales::percent)</code></pre>
+<p><img src="07_session_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p></li>
+<li><p>Copy and paste the tribbles below into your own script to answer
+the following three questions.</p>
+<pre class="r"><code>superheroes &lt;- tibble::tribble(
+       ~name, ~alignment,  ~gender,          ~publisher,
+   &quot;Magneto&quot;,      &quot;bad&quot;,   &quot;male&quot;,            &quot;Marvel&quot;,
+     &quot;Storm&quot;,     &quot;good&quot;, &quot;female&quot;,            &quot;Marvel&quot;,
+  &quot;Mystique&quot;,      &quot;bad&quot;, &quot;female&quot;,            &quot;Marvel&quot;,
+    &quot;Batman&quot;,     &quot;good&quot;,   &quot;male&quot;,                &quot;DC&quot;,
+     &quot;Joker&quot;,      &quot;bad&quot;,   &quot;male&quot;,                &quot;DC&quot;,
+  &quot;Catwoman&quot;,      &quot;bad&quot;, &quot;female&quot;,                &quot;DC&quot;,
+   &quot;Hellboy&quot;,     &quot;good&quot;,   &quot;male&quot;, &quot;Dark Horse Comics&quot;
+  )
+
+publisher_info &lt;- tibble::tribble(
+  ~publisher, ~yr_founded,
+        &quot;DC&quot;,       1934,
+    &quot;Marvel&quot;,       1939,
+     &quot;Image&quot;,       1992
+  )</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li><p>Merge the two datasets, keeping all observations from the
+<code>superheroes</code> dataset.</p></li>
+<li><p>Merge the two datasets, keeping all observations from the
+<code>publisher_info</code> dataset. How does <code>join</code> handle
+duplicate keys in this case?</p></li>
+<li><p>Merge the two datasets, ensuring that no observations are
+dropped.</p></li>
+</ol></li>
+<li><p>Aiden and Sarah have given us a real data example from the
+imaging lab to practice string cleaning using the <code>stringr</code>
+package. Out of an abundance of caution, the data will be sent via Slack
+instead of uploaded here, because the data includes real IDs. Your job
+is to do two things: first make edits so that all digit parts of the IDs
+are separated by the same type of character. Second, some IDs have a
+four digit time tag. Please remove this tag so that the IDs become more
+consistent.</p></li>
+<li><p>As we talked about during the Thursday session, the variables
+used to connect each pair of tables when joining are called keys. A key
+is a variable (or set of variables) that uniquely identifies an
+observation. In simple cases, a single variable is sufficient to
+identify an observation. In other cases, multiple variables may be
+needed (in the Cloudbuddy data for example, we need to use both
+<code>Cloudbuddy</code> and <code>Age_in_days</code> to uniquely
+identify each observation). Find the keys in the following datasets:</p>
+<ul>
+<li><code>Lahman::Batting</code></li>
+<li><code>babynames::babynames</code></li>
+<li><code>nasaweather::atmos</code></li>
+<li><code>fueleconomy::vehicles</code></li>
+<li><code>ggplot2::diamonds</code></li>
+</ul>
+<p><br></p>
+<p>(You might need to install some packages and read some
+documentation)</p></li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

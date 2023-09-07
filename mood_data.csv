@@ -1,0 +1,138 @@
+Cloudbuddy mood data
+"Mood was coded with five possible levels (very sad; sad; neutral; happy; very happy)Ê"
+
+Cloudbuddy,mood,Age
+cbID-01,happy,1-days
+cbIDnum-01,happy,12
+cbID-001,Neutral,24
+cbID-01,neutral,33
+cbID-01,V sad,46
+cbID-01,very happy,55
+cbID-01,Neutral,68
+cbID-01,Neutral,79
+cbID-01,happy,89
+cbID-02,Happy,1
+cloudbuddyID-02,V sad,11
+cbID-02,very happy,17
+cbID-02,neutral,25-days
+cbID-02,very happy,34
+cbID-02,Neutral,42
+cbID-02,Very Happy,49
+cbID-2,very happy,58
+cloudbuddyID-02,Happy,67
+cbID-02,neutral,73
+cbID-002,medium,82
+cbID-02,happy,89
+cbID-3,neutral,1
+cbID-3,Happy,15-days
+cbID-03,neutral,32
+cbID-003,Happy,47
+cbID-003,Happy,60
+cbID-03,neutral,74
+clbud-Id-03,sad,91
+cbID-04,neutral,1
+cbID-04,very sad,10
+cbID-004,neutral,20
+cloudbuddyID-04,neutral,27
+cbID-04,happy,37
+cbID-04,Sad,45
+cbID-004,happy,55
+cbID-4,Neutral,63
+cbID-04,very sad,70
+cbID-04,Neutral,81
+cbIDnumber-04,neutral,91
+cbID-05,very very happy,1
+cbID-5,oh so sad,7
+cbIDnumber-05,neutral,10
+cbID-05,Very sad,18
+cbID-05,Neutral,23
+cbID-05,very very happy,33
+cbID-005,Sad,37
+cbID-05,neutral,43
+cloudbuddyID-05,neutral,49
+cbID-05,neutral,55
+cbID-05,Neutral,59
+cbID-005,very sad,66
+clbud-Id-05,neutral,72
+cbID-005,Happy,78
+cbID-05,Neutral,84
+cloudbuddyID-05,v happy,91
+cbIDnumber-06,Neutral,1
+cbID-06,neutral,10
+cbID-06,V sad,20-days
+cbIDnum-06,happy,28
+cbID-06,Neutral,38
+cbID-06,Neutral,47
+cbIDnum-06,v happy,55
+cbID-06,Neutral,63
+cbID-06,Neutral,72
+cbID-06,Neutral,81
+cloudbuddyID-006,Sad,91
+cbID-07,oh so sad,1
+cbID-07,medium,20-days
+cbID-07,Very super happy,36
+cbID-7,Happy,54
+cbID-07,happy,74
+cbID-07,neutral,91
+cbID-08,Sad,1-days
+cbID-08,Happy,9-days
+cbID-08,neutral,18
+cbID-08,neutral,24-days
+cbID-08,very happy,34
+cbID-08,neutral,40-days
+cbID-08,Neutral,48
+clbud-Id-08,neutral,58
+cbID-08,Very Happy,65
+cbID-08,v happy,74
+cbID-08,Happy,81-days
+cbID-08,neutral,91-days
+cbID-09,oh so sad,1
+cbID-09,sad,12
+cbID-009,very happy,23
+cbIDnum-09,Very Happy,34
+cbID-09,Very sad,44
+cbIDnum-09,very sad,56
+cbID-09,sad,68
+cbID-09,Very Happy,80
+cbID-009,Happy,90
+cbID-010,neutral,1
+cbID-010,happy,7
+cbID-010,happy,13
+cbID-010,Sad,20
+cbID-010,Very Happy,26
+cbID-10,happy,30
+cloudbuddyID-010,sad,40
+cbID-010,Sad,46
+cbID-10,Neutral,50
+cbID-010,Neutral,58
+cbID-010,Very Happy,63
+cbID-010,Very Happy,72
+clbud-Id-010,V sad,76
+cbID-010,Neutral,84
+cbID-0010,very happy,91
+cbID-011,medium,1
+cbID-0011,happy,13-days
+cbID-011,very sad,22
+cbID-11,neutral,31
+cbID-011,medium,41
+cbID-11,happy,50
+cbID-011,neutral,63
+cbID-0011,very happy,71
+cbID-011,neutral,77
+cbID-011,neutral,90
+cbID-11b,Neutral,1
+cbID-011b,Sad,12
+cbID-011b,Neutral,26
+cloudbuddyID-011b,sad,39
+cbID-0011b,neutral,50
+cbID-0011b,Very Happy,64
+cbID-011b,v happy,77
+cbID-011b,neutral,88
+cbID-011c,Very Happy,1
+cbID-011c,neutral,15
+cbID-011c,Happy,26
+cbID-11c,Happy,39
+cbID-011c,Happy,53
+cbID-011c,Neutral,64-days
+cbID-011c,happy,75
+cbID-011c,neutral,91
