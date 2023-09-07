@@ -15,26 +15,28 @@ knitr::opts_chunk$set(echo = TRUE)
 * Combine two data sets into one with `*_join()` functions
 
 
-<!-- ## Script -->
+## Script
 
-<!-- You can download the script from session 3 by clicking the link below. -->
+Download the session 7 script by clicking the link below.
 
-
-<!-- ```{r, include = FALSE, eval = FALSE} -->
-
-<!-- # install and load these packages -->
-<!-- devtools::install_github('yihui/xfun') -->
-
-<!-- # embed_file() requires a few more packages -->
-<!-- xfun::pkg_load2(c('base64enc', 'htmltools', 'mime')) -->
-<!-- ``` -->
+<!-- to add scripts -->
 
 
+```{r, include = FALSE, eval = FALSE}
 
-<!-- ```{r echo=FALSE} -->
-<!-- # a embed single file -->
-<!-- xfun::embed_file('session_03.R') -->
-<!-- ``` -->
+# install and load these packages
+devtools::install_github('yihui/xfun')
+
+# embed_file() requires a few more packages
+xfun::pkg_load2(c('base64enc', 'htmltools', 'mime'))
+```
+
+
+
+```{r echo=FALSE}
+# a embed single file
+xfun::embed_file('session_07.R')
+```
 
 
 ## Cheatsheets
